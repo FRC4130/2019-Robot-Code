@@ -29,7 +29,7 @@ public class  Wrist {
         wrist.setInverted(false);
         wrist2.setInverted(false);
 
-        wrist.follow(wrist2);
+        wrist2.follow(wrist);
 
         //Giving the motors a full range of motion
         wrist.configNominalOutputForward(0.0, kTimeoutMS);
@@ -41,9 +41,9 @@ public class  Wrist {
         wrist.set(ControlMode.PercentOutput, 0);
 
         //Motion Magic
-        wrist.config_kP(slotIdx, kTimeoutMS);
-        wrist.config_kI(slotIdx, kTimeoutMS);
-        wrist.config_kD(slotIdx, kTimeoutMS);
+        // wrist.config_kP(slotIdx, kTimeoutMS);
+        // wrist.config_kI(slotIdx, kTimeoutMS);
+        // wrist.config_kD(slotIdx, kTimeoutMS);
 
     }
 

@@ -12,11 +12,22 @@ public class WristTele implements ILoopable {
 
     Wrist _wrist;
     Joystick _joystick;
+    WristMode _actualmode;
+    WristMode _desiredmode;
+
+    double wristJoystick;
+    boolean suckButton;
+    boolean blowButton;
+    boolean manualOverride;
 
     public WristTele() {
 
         _wrist = Subsystems.wrist;
         _joystick = RobotMap.operatorJoystick;
+        _actualmode = WristMode.Encoder;
+        _desiredmode = WristMode.Encoder;
+
+
 
     }
 
@@ -24,25 +35,74 @@ public class WristTele implements ILoopable {
 
         System.out.println("[INFO] Teleop Wrist cnontrols have started");
 
+        updateInputs();
         _wrist.setNeutralMode(NeutralMode.Brake);
 
     }
 
     public void onLoop() {
 
-        _wrist.driveDirect(_joystick.getRawAxis(1)*-1);
+        updateInputs();
+        updateMode();
 
-        if(_joystick.getRawButton(7)) {
+        switch(_actualmode) {
+
+            case Encoder:
+                _wrist.driveDirect(0);
+                break;
+
+            case Pitch:
+                _wrist.driveDirect(0);
+                break;
+
+            case Manual:
+                _wrist.driveDirect(wristJoystick);
+                break;
+
+        }
+
+
+
+
+
+
+
+
+
+ 
+
+        if(suckButton) {
 
             _wrist.suck();
 
         }
 
-        else if(_joystick.getRawButton(8)) {
+        else if(blowButton) {
 
             _wrist.blow();
 
         }
+
+    }
+
+    private void updateInputs() {
+
+        wristJoystick = _joystick.getRawAxis(1)*-1;
+        suckButton = _joystick.getRawButton(7);
+        blowButton = _joystick.getRawButton(8);
+        manualOverride = _joystick.getRawButton(5);
+        
+
+    }
+
+    private void updateMode() {
+
+        if(manualOverride) {
+            _actualmode = WristMode.Manual;
+
+        }
+
+        else _actualmode = WristMode.Encoder;
 
     }
 
