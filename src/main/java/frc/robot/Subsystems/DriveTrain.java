@@ -28,6 +28,12 @@ public class DriveTrain {
         rightDrive = RobotMap.rightDrive;
         rightDrive2 = RobotMap.rightDrive2;
 
+        //Configs
+        leftDrive.configAllSettings(Configs.leftDrive);
+        leftDrive2.configFactoryDefault();
+        rightDrive.configAllSettings(Configs.rightDrive);
+        rightDrive2.configFactoryDefault();
+
         //Setting Inverted
         leftDrive.setInverted(false);
         leftDrive2.setInverted(false);
@@ -38,34 +44,9 @@ public class DriveTrain {
         leftDrive2.follow(leftDrive);
         rightDrive2.follow(rightDrive);
 
-        //Speed Control 
-        leftDrive.configPeakOutputForward(1.0, kTimeoutMS);
-        leftDrive.configPeakOutputReverse(-1.0, kTimeoutMS);
-        leftDrive.configNominalOutputForward(0.0, kTimeoutMS);
-        leftDrive.configNominalOutputReverse(0.0, kTimeoutMS);
-
-
-        rightDrive.configPeakOutputForward(1.0, kTimeoutMS);
-        rightDrive.configPeakOutputReverse(-1.0, kTimeoutMS);
-        rightDrive.configNominalOutputForward(0.0, kTimeoutMS);
-        rightDrive.configNominalOutputReverse(0.0, kTimeoutMS);
-
         //Encoders
-        leftDrive.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, kTimeoutMS);
         leftDrive.setSensorPhase(true);
-        
-        rightDrive.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, kTimeoutMS);
         rightDrive.setSensorPhase(true);
-
-
-        //Motion Magic PID
-         leftDrive.config_kP(0, 0, kTimeoutMS);
-         leftDrive.config_kI(0, 0, kTimeoutMS);
-         leftDrive.config_kD(0, 0, kTimeoutMS);
-
-         rightDrive.config_kP(0, 0, kTimeoutMS);
-         rightDrive.config_kI(0, 0, kTimeoutMS);
-         rightDrive.config_kD(0, 0, kTimeoutMS);
 
         leftDrive.set(ControlMode.PercentOutput, 0);
         rightDrive.set(ControlMode.PercentOutput, 0);

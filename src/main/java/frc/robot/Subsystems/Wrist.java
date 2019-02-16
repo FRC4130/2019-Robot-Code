@@ -26,25 +26,16 @@ public class  Wrist {
 
         intake = RobotMap.Intake;
 
+        wrist.configAllSettings(Configs.wrist);
+        wrist2.configFactoryDefault();
+
         wrist.setInverted(false);
         wrist2.setInverted(false);
 
         wrist.follow(wrist2);
 
-        //Giving the motors a full range of motion
-        wrist.configNominalOutputForward(0.0, kTimeoutMS);
-        wrist.configNominalOutputReverse(0.0, kTimeoutMS);
-        wrist.configPeakOutputForward(1.0, kTimeoutMS);
-        wrist.configPeakOutputReverse(-1.0,kTimeoutMS);
-
         //Setting control mode to 0, that way it is stuck at 0 when first enabled
         wrist.set(ControlMode.PercentOutput, 0);
-
-        //Motion Magic
-        wrist.config_kP(0, 0, kTimeoutMS);
-        wrist.config_kI(0, 0, kTimeoutMS);
-        wrist.config_kD(0, 0, kTimeoutMS);
-
     }
 
     //Setting the neutral mode to be used in another class. 

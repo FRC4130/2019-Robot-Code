@@ -18,14 +18,10 @@ public class Climb {
         lift = RobotMap.liftMotor;
         lift2 = RobotMap.liftMotor2;
 
+        lift.configAllSettings(Configs.climber);
+        lift2.configFactoryDefault();
+
         lift2.follow(lift);
-
-        //Configuring for a full motion of control
-        lift.configPeakOutputForward(1.0, kTimeoutMS);
-        lift.configPeakOutputReverse(-1.0, kTimeoutMS);
-        lift.configNominalOutputForward(0.0,kTimeoutMS);
-        lift.configNominalOutputReverse(0.0, kTimeoutMS);
-
     }
 
     //Setting the neutral mode of the elevator, which is set in another class
