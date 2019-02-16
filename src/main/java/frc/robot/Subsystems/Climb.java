@@ -1,6 +1,7 @@
 package frc.robot.Subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
@@ -11,21 +12,17 @@ public class Climb {
     private VictorSPX lift;
     private VictorSPX lift2;
 
-    private final int kTimeoutMS = 10;
-
     public Climb() {
 
         lift = RobotMap.liftMotor;
         lift2 = RobotMap.liftMotor2;
 
+        lift.configAllSettings(Configs.climber);
+        lift2.configFactoryDefault();
+
+        lift.setInverted(false);
         lift2.follow(lift);
-
-        //Configuring for a full motion of control
-        lift.configPeakOutputForward(1.0, kTimeoutMS);
-        lift.configPeakOutputReverse(-1.0, kTimeoutMS);
-        lift.configNominalOutputForward(0.0,kTimeoutMS);
-        lift.configNominalOutputReverse(0.0, kTimeoutMS);
-
+        lift2.setInverted(InvertType.FollowMaster);
     }
 
     //Setting the neutral mode of the elevator, which is set in another class

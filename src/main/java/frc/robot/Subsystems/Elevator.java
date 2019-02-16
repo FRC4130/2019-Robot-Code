@@ -2,7 +2,7 @@ package frc.robot.Subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.DemandType;
-import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
@@ -23,26 +23,15 @@ public class Elevator {
         elevate = RobotMap.elevateMotor;
         elevate2 = RobotMap.elevateMotor2;
 
-        elevate2.follow(elevate);
-
-        //Control gains, full up or full down
-        elevate.configPeakOutputForward(1.0, kTimeout);
-        elevate.configPeakOutputReverse(-1.0, kTimeout);
-        elevate.configNominalOutputForward(0.0 , kTimeout);
-        elevate.configNominalOutputReverse(0.0, kTimeout);
-
-        //Motion Magic
-        elevate.configMotionAcceleration(150);
-        elevate.configMotionCruiseVelocity(150);
-        elevate.config_kF(0, 3);
-         elevate.config_kP(0, 3);
+        elevate.configAllSettings(Configs.arm);
+        elevate2.configFactoryDefault();
 
         //TODO: See if these need to be changed
         elevate.setInverted(false);
-        elevate2.setInverted(false);
+        elevate2.follow(elevate);
+        elevate2.setInverted(InvertType.FollowMaster);
 
         //Using Mag Encoder
-        elevate.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, kTimeout);
         elevate.setSensorPhase(true);
 
     }
