@@ -41,9 +41,9 @@ public class  Wrist {
         wrist.set(ControlMode.PercentOutput, 0);
 
         //Motion Magic
-        // wrist.config_kP(slotIdx, kTimeoutMS);
-        // wrist.config_kI(slotIdx, kTimeoutMS);
-        // wrist.config_kD(slotIdx, kTimeoutMS);
+        wrist.config_kP(0, 0, kTimeoutMS);
+        wrist.config_kI(0, 0, kTimeoutMS);
+        wrist.config_kD(0, 0, kTimeoutMS);
 
     }
 
@@ -66,7 +66,7 @@ public class  Wrist {
 
     }
 
-    public void blow() {
+    public void spit() {
 
         intake.set(ControlMode.PercentOutput, outtakeSpeed);
 

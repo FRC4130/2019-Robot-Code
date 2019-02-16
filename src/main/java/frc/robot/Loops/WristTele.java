@@ -79,7 +79,7 @@ public class WristTele implements ILoopable {
 
         else if(blowButton) {
 
-            _wrist.blow();
+            _wrist.spit();
 
         }
 
