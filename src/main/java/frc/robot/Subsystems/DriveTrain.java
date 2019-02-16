@@ -1,7 +1,7 @@
 package frc.robot.Subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
@@ -36,13 +36,12 @@ public class DriveTrain {
 
         //Setting Inverted
         leftDrive.setInverted(false);
-        leftDrive2.setInverted(false);
+        leftDrive2.follow(leftDrive);
+        leftDrive2.setInverted(InvertType.FollowMaster);
 
         rightDrive.setInverted(true);
-        rightDrive2.setInverted(true);
-
-        leftDrive2.follow(leftDrive);
         rightDrive2.follow(rightDrive);
+        rightDrive2.setInverted(InvertType.FollowMaster);
 
         //Encoders
         leftDrive.setSensorPhase(true);

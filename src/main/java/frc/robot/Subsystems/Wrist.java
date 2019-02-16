@@ -1,6 +1,7 @@
 package frc.robot.Subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
@@ -13,8 +14,6 @@ public class  Wrist {
     private TalonSRX wrist2;
     
     private VictorSPX intake;
-
-    private final int kTimeoutMS = 10;
 
     private final int intakeSpeed = 1;
     private final int outtakeSpeed = -1;
@@ -30,9 +29,9 @@ public class  Wrist {
         wrist2.configFactoryDefault();
 
         wrist.setInverted(false);
-        wrist2.setInverted(false);
 
-        wrist.follow(wrist2);
+        wrist2.follow(wrist);
+        wrist2.setInverted(InvertType.FollowMaster);
 
         //Setting control mode to 0, that way it is stuck at 0 when first enabled
         wrist.set(ControlMode.PercentOutput, 0);
