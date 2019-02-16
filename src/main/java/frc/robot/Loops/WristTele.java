@@ -40,7 +40,7 @@ public class WristTele implements ILoopable {
 
         else if(_joystick.getRawButton(8)) {
 
-            _wrist.blow();
+            _wrist.spit();
 
         }
 

@@ -59,13 +59,13 @@ public class DriveTrain {
 
 
         //Motion Magic PID
-         leftDrive.config_kP(slotIdx, kTimeoutMS);
-         leftDrive.config_kI(slotIdx, kTimeoutMS);
-         leftDrive.config_kD(slotIdx, kTimeoutMS);
+         leftDrive.config_kP(0, 0, kTimeoutMS);
+         leftDrive.config_kI(0, 0, kTimeoutMS);
+         leftDrive.config_kD(0, 0, kTimeoutMS);
 
-         rightDrive.config_kP(slotIdx, kTimeoutMS);
-         rightDrive.config_kI(slotIdx, kTimeoutMS);
-         rightDrive.config_kD(slotIdx, kTimeoutMS);
+         rightDrive.config_kP(0, 0, kTimeoutMS);
+         rightDrive.config_kI(0, 0, kTimeoutMS);
+         rightDrive.config_kD(0, 0, kTimeoutMS);
 
         leftDrive.set(ControlMode.PercentOutput, 0);
         rightDrive.set(ControlMode.PercentOutput, 0);
