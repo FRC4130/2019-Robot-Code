@@ -100,6 +100,8 @@ public class  Wrist {
                     wrist.selectProfileSlot(encSlot, 0);
                     break;
                 case Pitch:
+                    wrist.configSelectedFeedbackSensor(FeedbackDevice.RemoteSensor0);
+                    wrist.selectProfileSlot(pitchSlot, 0);
                     break;
                 case Manual:
                     break;
