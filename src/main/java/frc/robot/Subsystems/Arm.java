@@ -19,8 +19,6 @@ public class Arm {
 
    double targetHeightNativeUnits = 0;
 
-   private ArmMode currentMode = ArmMode.Stowed;
-
     public Arm() {
 
         arm = RobotMap.armMotor;
