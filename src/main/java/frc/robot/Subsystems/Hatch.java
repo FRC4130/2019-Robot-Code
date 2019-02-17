@@ -17,7 +17,7 @@ public class Hatch {
 
     }
 
-    public void driveDirect(Value vl) {
+    public void set(Value vl) {
 
         hatch.set(vl);
 
@@ -25,7 +25,7 @@ public class Hatch {
 
     public void disable() {
 
-        hatch.set(closed);
+        hatch.set(Value.kOff);
 
     }
 

@@ -12,46 +12,39 @@ public class HatchTele implements ILoopable{
     Hatch _hatch;
     Joystick _joystick;
 
-    public HatchTele() {
+    boolean openHatch = false;
 
+    public HatchTele() {
         _hatch = Subsystems.hatch;
         _joystick = RobotMap.operatorJoystick;
-
     }
 
     public void onStart() {
-
         System.out.println("[INFO] Hatch teleop controls have started");
-        _hatch.driveDirect(_hatch.closed);
-
+        _hatch.set(_hatch.closed);
     }
 
     public void onLoop() {
+        updateInputs();
+        updateHatchSolenoid();
+    }
 
-        if(_joystick.getRawButtonPressed(5)) {
-
-            _hatch.driveDirect(_hatch.closed);
-        }
-
-        else if(_joystick.getRawButtonPressed(6)) {
-
-            _hatch.driveDirect(_hatch.open);
-
-        }
+    private void updateInputs(){
+        openHatch = _joystick.getRawButton(RobotMap.kSpitHatchPanelButtonID);
+    }
+    
+    private void updateHatchSolenoid(){
+        if(openHatch){_hatch.set(_hatch.open);}
+        else{_hatch.set(_hatch.closed);}
     }
 
     public boolean isDone() {
-
         return false;
-
     }
 
     public void onStop() {
-
         _hatch.disable();
         System.out.println("[WARNING] Hatch teleoperated has been stopped");
-        
-
     }
 
 }
