@@ -118,4 +118,13 @@ public class  Wrist {
         intake.set(ControlMode.PercentOutput, outtakeSpeed);
     }
 
+    /**
+     * Gets the state of the cargo presence limit switch.
+     * Assumes switch is normally open.
+     * @return true if limit switch is closed.
+     */
+    public boolean getCargoLimitSwitch(){
+        return wrist.getSensorCollection().isRevLimitSwitchClosed();
+    }
+
 }

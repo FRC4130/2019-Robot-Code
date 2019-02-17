@@ -72,7 +72,7 @@ public class ArmTele implements ILoopable {
         goToLevelTwo = _joystick.getRawButton(RobotMap.kLevelTwoButtonID);
         goToLevelThree = _joystick.getRawButton(RobotMap.kLevelThreeButtonID);
 
-        useCargo = overrideUseCargo; /*TODO: or Talon Limit Switch */
+        useCargo = overrideUseCargo || Subsystems.wrist.getCargoLimitSwitch();
 
         intakeThrottle = _joystick.getRawAxis(RobotMap.kIntakeJoystickAxis);
     }
