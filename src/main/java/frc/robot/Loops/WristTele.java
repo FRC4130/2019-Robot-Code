@@ -12,7 +12,7 @@ public class WristTele implements ILoopable {
 
     Wrist _wrist;
     Joystick _joystick;
-    WristMode _actualmode;
+    WristMode _actualMode;
     WristMode _desiredmode;
 
     double wristJoystick;
@@ -20,15 +20,15 @@ public class WristTele implements ILoopable {
     boolean blowButton;
     boolean manualOverride;
 
-    public WristTele() {
+    //We can initialize target to 0 since that's our home position.
+    double _closedLoopTarget = 0;
+    double _setpoint = 0;
 
+    public WristTele() {
         _wrist = Subsystems.wrist;
         _joystick = RobotMap.operatorJoystick;
-        _actualmode = WristMode.Encoder;
+        _actualMode = WristMode.Encoder;
         _desiredmode = WristMode.Encoder;
-
-
-
     }
 
     public void onStart() {
@@ -41,48 +41,11 @@ public class WristTele implements ILoopable {
     }
 
     public void onLoop() {
-
         updateInputs();
         updateMode();
-
-        switch(_actualmode) {
-
-            case Encoder:
-                _wrist.driveDirect(0);
-                break;
-
-            case Pitch:
-                _wrist.driveDirect(0);
-                break;
-
-            case Manual:
-                _wrist.driveDirect(wristJoystick);
-                break;
-
-        }
-
-
-
-
-
-
-
-
-
- 
-
-        if(suckButton) {
-
-            _wrist.suck();
-
-        }
-
-        else if(blowButton) {
-
-            _wrist.spit();
-
-        }
-
+        updateClosedLoopTarget();
+        updateWrist();
+        updateIntake();
     }
 
     private void updateInputs() {
@@ -96,28 +59,54 @@ public class WristTele implements ILoopable {
     }
 
     private void updateMode() {
-
         if(manualOverride) {
-            _actualmode = WristMode.Manual;
-
+            _actualMode = WristMode.Manual;
         }
+        else _actualMode = WristMode.Encoder;
+    }
 
-        else _actualmode = WristMode.Encoder;
+    private void updateWrist() {
+        switch(_actualMode) {
+            case Encoder:
+                /* Do nothing for now.  We'll need to 
+                implement a case structure/value checking when we start using
+                Pigeon and switching back and forth between modes.
+                */
+                _setpoint = _closedLoopTarget;
+                break;
+            case Pitch:
+                //This mode currently isn't supported.
+                _actualMode = WristMode.Manual;
+                _setpoint = 0;
+                break;
+            case Manual:
+                _setpoint = wristJoystick;
+                break;
+        }
+        _wrist.set(_actualMode, _setpoint);
+    }
 
+    private void updateIntake() {
+        if(suckButton) {
+            _wrist.suck();
+        }
+        else if(blowButton) {
+            _wrist.spit();
+        }
+    }
+
+    private void updateClosedLoopTarget(){
+        
     }
 
     public boolean isDone() {
-
         return false;
-
     }
 
     public void onStop() {
-
         System.out.println("[WARNING] Wrist Tele controls have Stopped");
 
         _wrist.setNeutralMode(NeutralMode.Brake);
         _wrist.driveDirect(0);
-
     }
 }

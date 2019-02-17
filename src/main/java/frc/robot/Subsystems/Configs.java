@@ -40,6 +40,7 @@ public class Configs{
         arm.motionCruiseVelocity = 600;
         arm.remoteFilter0.remoteSensorDeviceID = RobotMap.kWristMotor2ID;
         arm.remoteFilter0.remoteSensorSource = RemoteSensorSource.GadgeteerPigeon_Pitch;
+        arm.clearPositionOnLimitF = true;
 
         /* --- Intake --- */
 
