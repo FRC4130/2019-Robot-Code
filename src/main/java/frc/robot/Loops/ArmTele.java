@@ -13,6 +13,8 @@ public class ArmTele implements ILoopable {
     Arm  _arm;
     Joystick _joystick;
 
+    ArmMode ModeofArm;
+
     public ArmTele() {
 
         _arm = Subsystems.arm;
