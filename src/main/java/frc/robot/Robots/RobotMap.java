@@ -60,17 +60,17 @@ public class RobotMap {
 
     /* --- Operator Button/Axis IDs --- */
     //TODO: Map Operator Gamepad inputs here.
-    public static final int kFloorCargoButtonID = 0;
-    public static final int kFloorHatchButtonID = 0;
-    public static final int kCargoShipButtonID = 0;
-    public static final int kLevelOneButtonID = 0;
-    public static final int kLevelTwoButtonID = 0;
-    public static final int kLevelThreeButtonID = 0;
-    public static final int kSpitHatchPanelButtonID = 0;
-    public static final int kOverrideCargoLimitSwitchButtonID = 0;
-    public static final int kFloorHatchOverrideButtonID = 0;
-    public static final int kIntakeJoystickAxis = 0;
-    public static final int kGoToHomeButtonID = 0;
+    public static final int kFloorCargoButtonID = 7;
+    public static final int kFloorHatchButtonID = 5;
+    public static final int kCargoShipButtonID = 1;
+    public static final int kLevelOneButtonID = 2;
+    public static final int kLevelTwoButtonID = 3;
+    public static final int kLevelThreeButtonID = 4;
+    public static final int kSpitHatchPanelButtonID = 6;
+    public static final int kOverrideCargoLimitSwitchButtonID = 10;
+    public static final int kFloorHatchOverrideButtonID = 9;
+    public static final int kIntakeJoystickAxis = 1;
+    public static final int kGoToHomeButtonID = 14;
 
     //initiating all of the devices coded above so they are now connected to a physical device on the robot
     public static void Init() {
