@@ -8,12 +8,12 @@ import frc.robot.Robots.RobotMap;
 import frc.robot.Robots.Subsystems;
 import frc.robot.Subsystems.Arm;;
 
-public class ElevateTele implements ILoopable {
+public class ArmTele implements ILoopable {
 
     Arm  _arm;
     Joystick _joystick;
 
-    public ElevateTele() {
+    public ArmTele() {
 
         _arm = Subsystems.arm;
         _joystick = RobotMap.operatorJoystick;
