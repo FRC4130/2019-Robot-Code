@@ -34,6 +34,18 @@ public class ArmTele implements ILoopable {
 
         _arm.setNeutralMode(NeutralMode.Brake);
 
+        switch(ModeofArm) {
+
+            case Stowed:
+            
+            break;
+
+            case Active:
+
+            break;
+
+        }
+
         //Home Position
         if(_joystick.getRawButton(1)) {
             _arm.setHeight(0);
