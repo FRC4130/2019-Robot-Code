@@ -7,79 +7,101 @@ import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.Robots.RobotMap;
 import frc.robot.Robots.Subsystems;
 import frc.robot.Subsystems.Arm;
-import frc.robot.Subsystems.ArmPosition;;
 
 public class ArmTele implements ILoopable {
 
     Arm  _arm;
     Joystick _joystick;
 
-    ArmMode ModeofArm;
+    boolean manualOverride;
+    double manualJoystick;
+
+    boolean goHome;
+
+    boolean goToFloor;
+    boolean goToCargoShip;
+    boolean goToLevelOne;
+    boolean goToLevelTwo;
+    boolean goToLevelThree;
+
+    boolean useCargo;
+
+    boolean overrideHatchPanelFromFloor;
+    boolean overrideUseCargo;
+
+    double intakeThrottle;
+
+    PositionSet currentTarget = Positions.home;
+    ScoringPositions currentGamePiecePositions = Positions.hatch;
 
     public ArmTele() {
-
         _arm = Subsystems.arm;
         _joystick = RobotMap.operatorJoystick;
-
     }
 
     public void onStart() {
-
-        System.out.println("[INFO] Teleop Elevator Controls are Starting");
-
+        System.out.println("[INFO] Teleop Arm Controls are Starting");
         _arm.setNeutralMode(NeutralMode.Brake);
-
     }
 
     public void onLoop() {
+        updateInputs();
+        updateTarget();
+        updateArm();
+    }
 
-        _arm.setNeutralMode(NeutralMode.Brake);
+    public void updateInputs(){
+        manualOverride = false;
+        manualJoystick = 0;
 
-        switch(ModeofArm) {
-
-            case Stowed:
-            _arm.setHeightInches(ArmPosition.Home);
-            break;
-
-            case Active:
-            _arm.setHeightInches(ArmPosition.Ground);
-            break;
-
+        if(_joystick.getRawButtonPressed(RobotMap.kFloorHatchOverrideButtonID)){
+            if(overrideHatchPanelFromFloor){overrideHatchPanelFromFloor = false;}
+            else{overrideHatchPanelFromFloor = true;}
         }
 
-        //Home Position
-        if(_joystick.getRawButton(1)) {
-            _arm.setHeight(0);
-
+        if(_joystick.getRawButtonPressed(RobotMap.kFloorCargoButtonID)){
+            if(overrideUseCargo){overrideUseCargo = false;}
+            else{overrideUseCargo = true;}
         }
 
-        //Ground Position
-        else if(_joystick.getRawButton(2)) {
-            _arm.setHeight(618);
+        goHome = _joystick.getRawButton(RobotMap.kGoToHomeButtonID);
 
+        goToFloor = _joystick.getRawButton(RobotMap.kFloorCargoButtonID) || _joystick.getRawButton(RobotMap.kFloorHatchButtonID);
+        goToCargoShip = _joystick.getRawButton(RobotMap.kCargoShipButtonID);
+        goToLevelOne = _joystick.getRawButton(RobotMap.kLevelOneButtonID);
+        goToLevelTwo = _joystick.getRawButton(RobotMap.kLevelTwoButtonID);
+        goToLevelThree = _joystick.getRawButton(RobotMap.kLevelThreeButtonID);
+
+        useCargo = overrideUseCargo; /*TODO: or Talon Limit Switch */
+
+        intakeThrottle = _joystick.getRawAxis(RobotMap.kIntakeJoystickAxis);
+    }
+
+    public void updateTarget(){
+        if(goHome){
+            currentTarget = Positions.home;
         }
+        else{
+            if(useCargo){currentGamePiecePositions = Positions.cargo;}
+            else if (overrideHatchPanelFromFloor){
+                currentGamePiecePositions = Positions.floorHatch;
+            }
+            else {currentGamePiecePositions = Positions.hatch;}
 
-        //Middle Position
-        else if(_joystick.getRawButton(3)) {
-            _arm.setHeight(1513);
-
+            if(goToFloor){currentTarget = currentGamePiecePositions.floor;}
+            else if(goToCargoShip){currentTarget = currentGamePiecePositions.ship;}
+            else if(goToLevelOne){currentTarget = currentGamePiecePositions.levelOne;}
+            else if(goToLevelTwo){currentTarget = currentGamePiecePositions.levelTwo;}
+            else if(goToLevelThree){currentTarget = currentGamePiecePositions.levelThree;}
         }
+    }
 
-        //Top Position
-        else if(_joystick.getRawButton(4)) {
-            _arm.setHeight(2539);
-
-        }
-
-        else _arm.driveDirect(_joystick.getRawAxis(1)*-1);
-    
+    public void updateArm(){
+        _arm.setTarget(currentTarget);
     }
 
     public boolean isDone() {
-
         return false;
-
-        
     }
 
     public void onStop() {

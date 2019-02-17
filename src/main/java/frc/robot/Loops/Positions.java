@@ -6,19 +6,23 @@ public class Positions{
     public static ScoringPositions hatch;
     public static ScoringPositions floorHatch;
 
+    public static PositionSet home;
+
     private static Positions _instance = new Positions();
 
     private Positions(){
+        home = new PositionSet();
         cargo = new ScoringPositions();
         hatch = new ScoringPositions();
         floorHatch = new ScoringPositions();
 
+        /* --- Home Position --- */
+        home.arm = 0;
+        home.wrist = 0;
+
         /* --- Positions when handling Cargo --- */
         cargo.floor.arm = 0;
         cargo.floor.wrist = 0;
-
-        cargo.loadingStation.arm = 0;
-        cargo.loadingStation.wrist = 0;
 
         cargo.ship.arm = 0;
         cargo.ship.wrist = 0;
@@ -36,9 +40,6 @@ public class Positions{
         hatch.floor.arm = 0;
         hatch.floor.wrist = 0;
 
-        hatch.loadingStation.arm = 0;
-        hatch.loadingStation.wrist = 0;
-
         hatch.ship.arm = 0;
         hatch.ship.wrist = 0;
 
@@ -54,9 +55,6 @@ public class Positions{
         /* --- Positions when handling Hatch Panels from the Floor --- */
         floorHatch.floor.arm = 0;
         floorHatch.floor.wrist = 0;
-
-        floorHatch.loadingStation.arm = 0;
-        floorHatch.loadingStation.wrist = 0;
 
         floorHatch.ship.arm = 0;
         floorHatch.ship.wrist = 0;

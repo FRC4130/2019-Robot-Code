@@ -62,6 +62,10 @@ public class WristTele implements ILoopable {
         else _actualMode = WristMode.Encoder;
     }
 
+    private void updateClosedLoopTarget(){
+        _closedLoopTarget = Subsystems.arm.getCurrentTarget().wrist;
+    }
+
     private void updateWrist() {
         switch(_actualMode) {
             case Encoder:
@@ -90,10 +94,6 @@ public class WristTele implements ILoopable {
         else if(blowButton) {
             _wrist.spit();
         }
-    }
-
-    private void updateClosedLoopTarget(){
-
     }
 
     public boolean isDone() {
