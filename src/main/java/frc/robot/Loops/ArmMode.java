@@ -4,6 +4,7 @@ public enum ArmMode {
 
     Stowed,
 
-    Active;
+    Active,
 
+    Manual;
 };
