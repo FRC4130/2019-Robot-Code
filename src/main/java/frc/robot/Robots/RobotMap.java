@@ -57,6 +57,10 @@ public class RobotMap {
 
     /* --- Driver Button/Axis IDs --- */
     //TODO: Map Driver Gamepad inputs here.
+    public static final int kLeftDriveAxisID = 1;
+    public static final int kRightDriveAxisID = 5;
+    public static final int kLimeLightAssistButtonID = 0;
+    public static final int kLimeLightOverrideButtonID = 0;
 
     /* --- Operator Button/Axis IDs --- */
     //TODO: Map Operator Gamepad inputs here.
