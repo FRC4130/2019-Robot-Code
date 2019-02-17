@@ -6,7 +6,8 @@ import com.ctre.phoenix.motorcontrol.NeutralMode;
 import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.Robots.RobotMap;
 import frc.robot.Robots.Subsystems;
-import frc.robot.Subsystems.Arm;;
+import frc.robot.Subsystems.Arm;
+import frc.robot.Subsystems.ArmPosition;;
 
 public class ArmTele implements ILoopable {
 
@@ -37,11 +38,11 @@ public class ArmTele implements ILoopable {
         switch(ModeofArm) {
 
             case Stowed:
-            
+            _arm.setHeightInches(ArmPosition.Home);
             break;
 
             case Active:
-
+            _arm.setHeightInches(ArmPosition.Ground);
             break;
 
         }
