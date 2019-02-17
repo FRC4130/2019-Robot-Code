@@ -6,6 +6,7 @@ import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
+import frc.robot.Loops.ArmMode;
 import frc.robot.Robots.RobotMap;
 
 public class Arm {
@@ -17,6 +18,8 @@ public class Arm {
    private final int kPosBandwidth = 10;
 
    double targetHeightNativeUnits = 0;
+
+   private ArmMode currentMode = ArmMode.Stowed;
 
     public Arm() {
 
@@ -98,12 +101,6 @@ public class Arm {
 
     public void setNeutralMode(NeutralMode nm) {
         arm.setNeutralMode(nm);
-
-    }
-
-    public void Gravity(double percentOuput) {
-
-        arm.set(ControlMode.MotionMagic, 0, DemandType.ArbitraryFeedForward, percentOuput);
 
     }
 
