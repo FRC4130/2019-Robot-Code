@@ -8,31 +8,31 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import frc.robot.Robots.RobotMap;
 
-public class Elevator {
+public class Arm {
 
-   private TalonSRX elevate;
-   private TalonSRX elevate2;
+   private TalonSRX arm;
+   private TalonSRX arm2;
 
    private final int kTimeout = 5;
    private final int kPosBandwidth = 10;
 
    double targetHeightNativeUnits = 0;
 
-    public Elevator() {
+    public Arm() {
 
-        elevate = RobotMap.elevateMotor;
-        elevate2 = RobotMap.elevateMotor2;
+        arm = RobotMap.armMotor;
+        arm2 = RobotMap.armMotor2;
 
-        elevate.configAllSettings(Configs.arm);
-        elevate2.configFactoryDefault();
+        arm.configAllSettings(Configs.arm);
+        arm2.configFactoryDefault();
 
         //TODO: See if these need to be changed
-        elevate.setInverted(false);
-        elevate2.follow(elevate);
-        elevate2.setInverted(InvertType.FollowMaster);
+        arm.setInverted(false);
+        arm2.follow(arm);
+        arm2.setInverted(InvertType.FollowMaster);
 
         //Using Mag Encoder
-        elevate.setSensorPhase(true);
+        arm.setSensorPhase(true);
 
     }
 
@@ -53,7 +53,7 @@ public class Elevator {
         return setHeight(chainHeightToNative(inches));
     }
 
-    public boolean setHeightInches(ElevatorPosition pos) {
+    public boolean setHeightInches(ArmPosition pos) {
         return setHeightInches(pos.value);
 
     }
@@ -61,22 +61,22 @@ public class Elevator {
     public boolean setHeight(double valueNativeUnits) {
 
         if (valueNativeUnits > targetHeightNativeUnits) {
-            elevate.configMotionAcceleration(2000, kTimeout);
-            elevate.configMotionCruiseVelocity(1500, kTimeout);
+            arm.configMotionAcceleration(2000, kTimeout);
+            arm.configMotionCruiseVelocity(1500, kTimeout);
         }
 
         else if (valueNativeUnits < targetHeightNativeUnits) {
-            elevate.configMotionAcceleration(6000, kTimeout);
-            elevate.configMotionCruiseVelocity(1400*6, kTimeout);
+            arm.configMotionAcceleration(6000, kTimeout);
+            arm.configMotionCruiseVelocity(1400*6, kTimeout);
 
         }
 
         targetHeightNativeUnits = valueNativeUnits;
 
-        elevate.set(ControlMode.MotionMagic, valueNativeUnits);
+        arm.set(ControlMode.MotionMagic, valueNativeUnits);
 
         //TODO: Debounce this
-        if(elevate.getClosedLoopError(0) < kPosBandwidth) {
+        if(arm.getClosedLoopError(0) < kPosBandwidth) {
             return true;
         }
 
@@ -86,24 +86,24 @@ public class Elevator {
 
     public double getError() {
 
-        return elevate.getSelectedSensorPosition(0) - targetHeightNativeUnits;
+        return arm.getSelectedSensorPosition(0) - targetHeightNativeUnits;
 
     }
 
     //Teleop Controls
     public void driveDirect(double percentOuput) {
-        elevate.set(ControlMode.PercentOutput, percentOuput);
+        arm.set(ControlMode.PercentOutput, percentOuput);
         
     }
 
     public void setNeutralMode(NeutralMode nm) {
-        elevate.setNeutralMode(nm);
+        arm.setNeutralMode(nm);
 
     }
 
     public void Gravity(double percentOuput) {
 
-        elevate.set(ControlMode.MotionMagic, 0, DemandType.ArbitraryFeedForward, percentOuput);
+        arm.set(ControlMode.MotionMagic, 0, DemandType.ArbitraryFeedForward, percentOuput);
 
     }
 

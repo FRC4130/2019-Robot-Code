@@ -1,6 +1,6 @@
 package frc.robot.Subsystems;
 
-public enum ElevatorPosition {
+public enum ArmPosition{
     /**
      * Height of "home" position.
      * 
@@ -8,24 +8,24 @@ public enum ElevatorPosition {
     Home(0),
 
     /**
-     * Height of Elevator for Lower Position
+     * Height of the Arm for Lower Position
      */
     Ground(618),
 
     /**
-     * Height of Elevator for Middle Position
+     * Height of Arm for Middle Position
      */
     Middle(1513),
 
     /** 
-     * Height of Elevator for Highest Position.
+     * Height of Arm for Highest Position.
      */
     Max(2539);
 
 
     public final double value;
 
-    ElevatorPosition(double initValue) {
+    ArmPosition(double initValue) {
 
         this.value = initValue;
 

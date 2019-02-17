@@ -18,8 +18,8 @@ public class RobotMap {
     public static TalonSRX wristMotor;
     public static TalonSRX wristMotor2;
 
-    public static TalonSRX elevateMotor;
-    public static TalonSRX elevateMotor2;
+    public static TalonSRX armMotor;
+    public static TalonSRX armMotor2;
 
     public static VictorSPX liftMotor;
     public static VictorSPX liftMotor2;
@@ -44,8 +44,8 @@ public class RobotMap {
         wristMotor2 = new TalonSRX(6);
 
         //Elevator
-        elevateMotor = new TalonSRX(7);
-        elevateMotor2 = new TalonSRX(8);
+        armMotor = new TalonSRX(7);
+        armMotor2 = new TalonSRX(8);
 
         //Climber
         liftMotor = new VictorSPX(1);

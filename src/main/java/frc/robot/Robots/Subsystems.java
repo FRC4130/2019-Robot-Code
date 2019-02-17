@@ -1,8 +1,8 @@
 package frc.robot.Robots;
 
+import frc.robot.Subsystems.Arm;
 import frc.robot.Subsystems.Climb;
 import frc.robot.Subsystems.DriveTrain;
-import frc.robot.Subsystems.Elevator;
 import frc.robot.Subsystems.Hatch;
 import frc.robot.Subsystems.Limelight;
 import frc.robot.Subsystems.Wrist;
@@ -10,7 +10,7 @@ import frc.robot.Subsystems.Wrist;
 //This is pulling the individual subsystem classes out of the subsystem folder in the directory to the left
 public class Subsystems {
 
-    public static Elevator elevator;
+    public static Arm arm;
     public static DriveTrain driveTrain;
     public static Climb climb;
     public static Wrist wrist;
@@ -20,7 +20,7 @@ public class Subsystems {
     // This is tagging the values i created above to the actual methods from the classes i already made in the Subsystems folder
     public static void Init() {
 
-        elevator = new Elevator();
+        arm = new Arm();
         driveTrain = new DriveTrain();
         climb = new Climb();
         wrist = new Wrist();
