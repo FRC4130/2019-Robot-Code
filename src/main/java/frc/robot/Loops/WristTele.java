@@ -49,13 +49,10 @@ public class WristTele implements ILoopable {
     }
 
     private void updateInputs() {
-
         wristJoystick = _joystick.getRawAxis(1)*-1;
         suckButton = _joystick.getRawButton(7);
         blowButton = _joystick.getRawButton(8);
         manualOverride = _joystick.getRawButton(5);
-        
-
     }
 
     private void updateMode() {
@@ -96,7 +93,7 @@ public class WristTele implements ILoopable {
     }
 
     private void updateClosedLoopTarget(){
-        
+
     }
 
     public boolean isDone() {
