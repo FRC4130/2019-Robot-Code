@@ -1,13 +1,10 @@
 package frc.robot.Subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.DemandType;
-import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
-import frc.robot.Loops.ArmMode;
 import frc.robot.Robots.RobotMap;
 
 public class Arm {
@@ -101,55 +98,6 @@ public class Arm {
     public void setNeutralMode(NeutralMode nm) {
         arm.setNeutralMode(nm);
 
-    }
-
-        /**
-     * Set the target of the wrist.  Can be used for any mode.
-     * 
-     * @param mode Operation mode of the wrist.  Can be Manual, Encoder, or Pitch.
-     * @param setpoint Target setpoint for the wrist.  Units depend on the mode.
-     *                  Manual: Percent Output [-1, 1]
-     *                  Encoder: Position in Encoder ticks.
-     *                  Pitch: Position in Pigeon Pitch units.
-     */
-    public void set(ArmMode mode, double setpoint){
-        updateMode(mode); //manage config changes if mode has changed.
-        switch(mode){
-            case Manual:
-                arm.set(ControlMode.PercentOutput, setpoint);
-                break;
-            case Active:
-                arm.set(ControlMode.MotionMagic, setpoint);
-                break;
-            case Stowed:
-                //Don't use this for now - tuning not complete yet.
-                arm.set(ControlMode.Position, setpoint);
-                break;
-        }
-    }
-
-    /**
-     * Manages the configuration changes when the wrist mode of operation changes.
-     * Should be called before all Set() calls.
-     * 
-     * @param newMode Mode being commanded by caller.  May or may not be the same as the current mode.
-     */
-    private void updateMode(ArmMode newMode){
-        if(newMode != currentMode){
-            switch(newMode){
-                case Active:
-                    arm.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative);
-//                  arm.selectProfileSlot(encSlot, 0);
-                    break;
-                case Stowed:
-                    arm.configSelectedFeedbackSensor(FeedbackDevice.RemoteSensor0);
- //                   arm.selectProfileSlot(pitchSlot, 0);
-                    break;
-                case Manual:
-                    break;
-            }
-            currentMode = newMode;
-        }
     }
 
 }
