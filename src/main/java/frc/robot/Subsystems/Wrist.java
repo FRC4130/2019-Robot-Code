@@ -37,7 +37,7 @@ public class  Wrist {
         wrist.setInverted(false);
 
         wrist2.follow(wrist);
-        wrist2.setInverted(InvertType.FollowMaster);
+        wrist2.setInverted(InvertType.OpposeMaster);
 
         //Setting control mode to 0, that way it is stuck at 0 when first enabled
         wrist.set(ControlMode.PercentOutput, 0);
