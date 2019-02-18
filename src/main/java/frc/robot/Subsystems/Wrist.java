@@ -39,8 +39,12 @@ public class  Wrist {
         wrist2.follow(wrist);
         wrist2.setInverted(InvertType.OpposeMaster);
 
+        intake.configFactoryDefault();
+        intake.setInverted(false);
+
         //Setting control mode to 0, that way it is stuck at 0 when first enabled
         wrist.set(ControlMode.PercentOutput, 0);
+        intake.set(ControlMode.PercentOutput, 0);
     }
 
     //Setting the neutral mode to be used in another class. 
