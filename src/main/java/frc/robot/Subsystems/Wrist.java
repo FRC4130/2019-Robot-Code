@@ -39,6 +39,8 @@ public class  Wrist {
         wrist2.follow(wrist);
         wrist2.setInverted(InvertType.OpposeMaster);
 
+        wrist.setSensorPhase(false);
+
         intake.configFactoryDefault();
         intake.setInverted(false);
 
