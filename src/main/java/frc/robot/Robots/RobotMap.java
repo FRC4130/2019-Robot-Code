@@ -48,8 +48,8 @@ public class RobotMap {
     public static final int kIntakeMotorID = 3;
 
     /* --- Solenoid IDs --- */
-    public static final int kHatchForwardSolenoidID = 1;
-    public static final int kHatchReverseSolenoidID = 2;
+    public static final int kHatchForwardSolenoidID = 5;
+    public static final int kHatchReverseSolenoidID = 6;
 
     /* --- Joystick IDs --- */
     public static final int kDriverJoystickID = 0;
