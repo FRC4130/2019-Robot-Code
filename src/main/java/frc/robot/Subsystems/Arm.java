@@ -27,13 +27,12 @@ public class Arm {
         arm2.configFactoryDefault();
 
         //TODO: See if these need to be changed
-        arm.setInverted(false);
+        arm.setInverted(true);
         arm2.follow(arm);
         arm2.setInverted(InvertType.FollowMaster);
 
         //Using Mag Encoder
-        arm.setSensorPhase(true);
-
+        arm.setSensorPhase(false);
     }
 
     public boolean setTarget(PositionSet target) {

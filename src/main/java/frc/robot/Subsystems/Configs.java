@@ -26,10 +26,10 @@ public class Configs{
 
         /* --- Arm --- */
         arm.primaryPID.selectedFeedbackSensor = FeedbackDevice.CTRE_MagEncoder_Relative;
-        arm.slot0.kF = 3;
-        arm.slot0.kP = 3;
-        arm.motionAcceleration = 150;
-        arm.motionCruiseVelocity = 150;
+        arm.slot0.kF = 2.72;
+        arm.slot0.kP = 3.33;
+        arm.motionAcceleration = 250;
+        arm.motionCruiseVelocity = 350;
         arm.clearPositionOnLimitR = true;
 
 
