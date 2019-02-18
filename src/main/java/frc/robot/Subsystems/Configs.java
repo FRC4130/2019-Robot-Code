@@ -38,8 +38,8 @@ public class Configs{
         wrist.slot0.kF = 2.04;
         wrist.slot0.kP = 7;
         wrist.slot0.kD = 70;
-        wrist.motionAcceleration = 600;
-        wrist.motionCruiseVelocity = 600;
+        wrist.motionAcceleration = 200;
+        wrist.motionCruiseVelocity = 200;
         wrist.remoteFilter0.remoteSensorDeviceID = RobotMap.kWristMotor2ID;
         wrist.remoteFilter0.remoteSensorSource = RemoteSensorSource.GadgeteerPigeon_Pitch;
         wrist.clearPositionOnLimitF = true;

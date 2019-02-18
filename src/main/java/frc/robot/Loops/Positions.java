@@ -24,39 +24,41 @@ public class Positions{
         cargo.floor.arm = 0;
         cargo.floor.wrist = 0;
 
-        cargo.ship.arm = 0;
-        cargo.ship.wrist = 0;
+        cargo.ship.arm = 1396;
+        cargo.ship.wrist = -3061;
 
-        cargo.levelOne.arm = 0;
-        cargo.levelOne.wrist = 0;
+        cargo.levelOne.arm = 702;
+        cargo.levelOne.wrist = -2226;
 
-        cargo.levelTwo.arm = 0;
-        cargo.levelTwo.wrist = 0;
+        cargo.levelTwo.arm = 1401;
+        cargo.levelTwo.wrist = -2613;
 
-        cargo.levelThree.arm = 0;
-        cargo.levelThree.wrist = 0;
+        cargo.levelThree.arm = 2252;
+        cargo.levelThree.wrist = -2730;
         
         /* --- Positions when handling Hatch Panels --- */
         hatch.floor.arm = 0;
         hatch.floor.wrist = 0;
 
-        hatch.ship.arm = 0;
-        hatch.ship.wrist = 0;
 
-        hatch.levelOne.arm = 0;
-        hatch.levelOne.wrist = 0;
+        hatch.ship.arm = 463;
+        hatch.ship.wrist = -2801;
 
-        hatch.levelTwo.arm = 0;
-        hatch.levelTwo.wrist = 0;
+        hatch.levelOne.arm = 463;
+        hatch.levelOne.wrist = -2801;
 
-        hatch.levelThree.arm = 0;
-        hatch.levelThree.wrist = 0;
+        hatch.levelTwo.arm = 1303;
+        hatch.levelTwo.wrist = -2564;
+
+        hatch.levelThree.arm = 2216;
+        hatch.levelThree.wrist = -2801;
 
         /* --- Positions when handling Hatch Panels from the Floor --- */
         floorHatch.floor.arm = 0;
         floorHatch.floor.wrist = 0;
 
         floorHatch.ship.arm = 0;
+
         floorHatch.ship.wrist = 0;
 
         floorHatch.levelOne.arm = 0;
