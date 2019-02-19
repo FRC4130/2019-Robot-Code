@@ -116,12 +116,16 @@ public class  Wrist {
         }
     }
 
-    public void suck() {
-        intake.set(ControlMode.PercentOutput, intakeSpeed);
-    }
+    // public void suck() {
+    //     intake.set(ControlMode.PercentOutput, intakeSpeed);
+    // }
 
-    public void spit() {
-        intake.set(ControlMode.PercentOutput, outtakeSpeed);
+    // public void spit() {
+    //     intake.set(ControlMode.PercentOutput, outtakeSpeed);
+    // }
+
+    public void setIntake(double throttle){
+        intake.set(ControlMode.PercentOutput, throttle);
     }
 
     /**

@@ -16,8 +16,7 @@ public class WristTele implements ILoopable {
     WristMode _desiredmode;
 
     double wristJoystick;
-    boolean suckButton;
-    boolean blowButton;
+    double intakeJoystick;
     boolean manualOverride;
 
     //We can initialize target to 0 since that's our home position.
@@ -49,9 +48,8 @@ public class WristTele implements ILoopable {
     }
 
     private void updateInputs() {
-        wristJoystick = _joystick.getRawAxis(1)*-1;
-        suckButton = _joystick.getRawButton(7);
-        blowButton = _joystick.getRawButton(8);
+        //wristJoystick = _joystick.getRawAxis(1)*-1;
+        intakeJoystick = _joystick.getRawAxis(RobotMap.kIntakeJoystickAxis);
         manualOverride = _joystick.getRawButton(5);
     }
 
@@ -88,12 +86,7 @@ public class WristTele implements ILoopable {
     }
 
     private void updateIntake() {
-        if(suckButton) {
-            _wrist.suck();
-        }
-        else if(blowButton) {
-            _wrist.spit();
-        }
+        _wrist.setIntake(intakeJoystick);
     }
 
     public boolean isDone() {
