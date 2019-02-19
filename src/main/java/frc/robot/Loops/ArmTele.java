@@ -49,6 +49,7 @@ public class ArmTele implements ILoopable {
         updateInputs();
         updateTarget();
         updateArm();
+        updateMode();
     }
 
     public void updateInputs(){
@@ -100,6 +101,13 @@ public class ArmTele implements ILoopable {
 
     public void updateArm(){
         _arm.setTarget(currentTarget);
+    }
+
+    public void updateMode() {
+        if(_joystick.getRawButton(13)) {
+            _arm.driveDirect(_joystick.getRawAxis(5)*-1);
+
+        }
     }
 
     public boolean isDone() {

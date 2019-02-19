@@ -37,8 +37,8 @@ public class Positions{
         cargo.levelThree.wrist = -2730;
         
         /* --- Positions when handling Hatch Panels --- */
-        hatch.floor.arm = 0;
-        hatch.floor.wrist = 0;
+        hatch.floor.arm = 44;
+        hatch.floor.wrist = -297;
 
         hatch.ship.arm = 563;
         hatch.ship.wrist = -1913;

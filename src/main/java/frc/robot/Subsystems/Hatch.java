@@ -7,8 +7,8 @@ import frc.robot.Robots.RobotMap;
 public class Hatch {
 
     public DoubleSolenoid hatch;
-    public final Value closed = Value.kReverse;
-    public final Value open = Value.kForward;
+    public final Value closed = Value.kForward;
+    public final Value open = Value.kReverse;
 
     public Hatch() {
 

@@ -75,6 +75,7 @@ public class RobotMap {
     public static final int kFloorHatchOverrideButtonID = 9;
     public static final int kIntakeJoystickAxis = 1;
     public static final int kGoToHomeButtonID = 14;
+    public static final int kSwitchScoreModeButtonID = 8;
 
     //initiating all of the devices coded above so they are now connected to a physical device on the robot
     public static void Init() {

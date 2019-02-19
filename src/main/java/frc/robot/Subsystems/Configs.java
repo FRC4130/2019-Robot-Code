@@ -26,8 +26,8 @@ public class Configs{
 
         /* --- Arm --- */
         arm.primaryPID.selectedFeedbackSensor = FeedbackDevice.CTRE_MagEncoder_Relative;
-        arm.slot0.kF = 2.72;
-        arm.slot0.kP = 3.33;
+        arm.slot0.kF = 4.92;
+        arm.slot0.kP = 10;
         arm.motionAcceleration = 250;
         arm.motionCruiseVelocity = 350;
         arm.clearPositionOnLimitR = true;
@@ -35,9 +35,8 @@ public class Configs{
 
         /* --- Wrist --- */
         wrist.primaryPID.selectedFeedbackSensor = FeedbackDevice.CTRE_MagEncoder_Relative;
-        wrist.slot0.kF = 2.04;
-        wrist.slot0.kP = 7;
-        wrist.slot0.kD = 70;
+        wrist.slot0.kF = 2.7;
+        wrist.slot0.kP = 17;
         wrist.motionAcceleration = 200;
         wrist.motionCruiseVelocity = 200;
         wrist.remoteFilter0.remoteSensorDeviceID = RobotMap.kWristMotor2ID;
