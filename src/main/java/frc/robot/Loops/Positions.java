@@ -40,18 +40,17 @@ public class Positions{
         hatch.floor.arm = 0;
         hatch.floor.wrist = 0;
 
+        hatch.ship.arm = 563;
+        hatch.ship.wrist = -1913;
 
-        hatch.ship.arm = 463;
-        hatch.ship.wrist = -2801;
-
-        hatch.levelOne.arm = 463;
-        hatch.levelOne.wrist = -2801;
+        hatch.levelOne.arm = 563;
+        hatch.levelOne.wrist = -1913;
 
         hatch.levelTwo.arm = 1303;
-        hatch.levelTwo.wrist = -2564;
+        hatch.levelTwo.wrist = -2264;
 
         hatch.levelThree.arm = 2216;
-        hatch.levelThree.wrist = -2801;
+        hatch.levelThree.wrist = -2601;
 
         /* --- Positions when handling Hatch Panels from the Floor --- */
         floorHatch.floor.arm = 0;

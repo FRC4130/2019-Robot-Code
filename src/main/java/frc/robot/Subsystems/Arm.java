@@ -6,7 +6,9 @@ import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import frc.robot.Loops.PositionSet;
+import frc.robot.Loops.Positions;
 import frc.robot.Robots.RobotMap;
+import frc.robot.Robots.Subsystems;
 
 public class Arm {
 
@@ -39,7 +41,19 @@ public class Arm {
 
         currentTarget = target;
 
-        arm.set(ControlMode.MotionMagic, currentTarget.arm);
+        //If we're trying to home, make sure wrist is homed first.
+        if(currentTarget.arm == Positions.home.arm){
+            if(Subsystems.wrist.getEncoderPosition() > -300){
+                arm.set(ControlMode.MotionMagic, currentTarget.arm);
+            }
+            else{
+                //Make the wrist go to at least level two just in case
+                arm.set(ControlMode.MotionMagic, Positions.hatch.levelTwo.arm);
+            }
+        }
+        else{
+            arm.set(ControlMode.MotionMagic, currentTarget.arm);
+        }
 
         //TODO: Re-Write this
         if(arm.getClosedLoopError(0) < kPosBandwidth) {

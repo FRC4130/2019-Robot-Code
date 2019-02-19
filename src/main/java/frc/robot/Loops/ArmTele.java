@@ -4,6 +4,7 @@ import com.ctre.phoenix.ILoopable;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robots.RobotMap;
 import frc.robot.Robots.Subsystems;
 import frc.robot.Subsystems.Arm;
@@ -59,7 +60,7 @@ public class ArmTele implements ILoopable {
             else{overrideHatchPanelFromFloor = true;}
         }
 
-        if(_joystick.getRawButtonPressed(RobotMap.kFloorCargoButtonID)){
+        if(_joystick.getRawButtonPressed(RobotMap.kFloorHatchButtonID)){
             if(overrideUseCargo){overrideUseCargo = false;}
             else{overrideUseCargo = true;}
         }
@@ -73,7 +74,8 @@ public class ArmTele implements ILoopable {
         goToLevelThree = _joystick.getRawButton(RobotMap.kLevelThreeButtonID);
 
         useCargo = overrideUseCargo || Subsystems.wrist.getCargoLimitSwitch();
-
+        //Write this to the smart dashboard so we know if we're using Cargo
+        SmartDashboard.putBoolean("Use Cargo?", useCargo);
         intakeThrottle = _joystick.getRawAxis(RobotMap.kIntakeJoystickAxis);
     }
 
@@ -82,7 +84,7 @@ public class ArmTele implements ILoopable {
             currentTarget = Positions.home;
         }
         else{
-            if(useCargo){currentGamePiecePositions = Positions.cargo;}
+            if(useCargo){}//currentGamePiecePositions = Positions.cargo;}
             else if (overrideHatchPanelFromFloor){
                 currentGamePiecePositions = Positions.floorHatch;
             }

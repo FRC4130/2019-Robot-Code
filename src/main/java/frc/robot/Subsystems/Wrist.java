@@ -137,4 +137,8 @@ public class  Wrist {
         return wrist.getSensorCollection().isRevLimitSwitchClosed();
     }
 
+    public int getEncoderPosition(){
+        return wrist.getSelectedSensorPosition();
+    }
+
 }
