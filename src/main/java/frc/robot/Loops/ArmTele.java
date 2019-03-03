@@ -75,8 +75,6 @@ public class ArmTele implements ILoopable {
         goToLevelThree = _joystick.getRawButton(RobotMap.kLevelThreeButtonID);
 
         useCargo = overrideUseCargo; //|| Subsystems.wrist.getCargoLimitSwitch();
-
-        goToCargoShip = _joystick.getRawButton(RobotMap.kCargoShipButtonID);
         //Write this to the smart dashboard so we know if we're using Cargo
         SmartDashboard.putBoolean("Use Cargo?", useCargo);
         intakeThrottle = _joystick.getRawAxis(RobotMap.kIntakeJoystickAxis);
