@@ -49,7 +49,7 @@ public class ArmTele implements ILoopable {
         updateInputs();
         updateTarget();
         updateArm();
-        updateMode();
+        ManualDrive();
     }
 
     public void updateInputs(){
@@ -74,7 +74,9 @@ public class ArmTele implements ILoopable {
         goToLevelTwo = _joystick.getRawButton(RobotMap.kLevelTwoButtonID);
         goToLevelThree = _joystick.getRawButton(RobotMap.kLevelThreeButtonID);
 
-        useCargo = overrideUseCargo || Subsystems.wrist.getCargoLimitSwitch();
+        useCargo = overrideUseCargo; //|| Subsystems.wrist.getCargoLimitSwitch();
+
+        goToCargoShip = _joystick.getRawButton(RobotMap.kCargoShipButtonID);
         //Write this to the smart dashboard so we know if we're using Cargo
         SmartDashboard.putBoolean("Use Cargo?", useCargo);
         intakeThrottle = _joystick.getRawAxis(RobotMap.kIntakeJoystickAxis);
@@ -85,7 +87,7 @@ public class ArmTele implements ILoopable {
             currentTarget = Positions.home;
         }
         else{
-            if(useCargo){}//currentGamePiecePositions = Positions.cargo;}
+            if(useCargo){currentGamePiecePositions = Positions.cargo;}
             else if (overrideHatchPanelFromFloor){
                 currentGamePiecePositions = Positions.floorHatch;
             }
@@ -103,7 +105,7 @@ public class ArmTele implements ILoopable {
         _arm.setTarget(currentTarget);
     }
 
-    public void updateMode() {
+    public void ManualDrive() {
         if(_joystick.getRawButton(13)) {
             _arm.driveDirect(_joystick.getRawAxis(5)*-1);
 
