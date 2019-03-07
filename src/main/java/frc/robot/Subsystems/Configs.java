@@ -1,8 +1,12 @@
 package frc.robot.Subsystems;
 
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.LimitSwitchSource;
+import com.ctre.phoenix.motorcontrol.RemoteSensorSource;
 import com.ctre.phoenix.motorcontrol.can.TalonSRXConfiguration;
 import com.ctre.phoenix.motorcontrol.can.VictorSPXConfiguration;
+
+import frc.robot.Robots.RobotMap;
 
 public class Configs{
 
@@ -22,14 +26,23 @@ public class Configs{
 
         /* --- Arm --- */
         arm.primaryPID.selectedFeedbackSensor = FeedbackDevice.CTRE_MagEncoder_Relative;
-        arm.slot0.kF = 3;
-        arm.slot0.kP = 3;
-        arm.motionAcceleration = 150;
-        arm.motionCruiseVelocity = 150;
+        arm.slot0.kF = 4.92;
+        arm.slot0.kP = 10;
+        arm.motionAcceleration = 250;
+        arm.motionCruiseVelocity = 350;
+        arm.clearPositionOnLimitR = true;
 
 
         /* --- Wrist --- */
-
+        wrist.primaryPID.selectedFeedbackSensor = FeedbackDevice.CTRE_MagEncoder_Relative;
+        wrist.slot0.kF = 2.7;
+        wrist.slot0.kP = 17;
+        wrist.motionAcceleration = 200;
+        wrist.motionCruiseVelocity = 200;
+        wrist.remoteFilter0.remoteSensorDeviceID = RobotMap.kWristMotor2ID;
+        wrist.remoteFilter0.remoteSensorSource = RemoteSensorSource.GadgeteerPigeon_Pitch;
+        wrist.clearPositionOnLimitF = true;
+        wrist.reverseLimitSwitchSource = LimitSwitchSource.Deactivated;
 
         /* --- Intake --- */
 
@@ -45,7 +58,7 @@ public class Configs{
         /* --- Climber --- */
     }
 
-    /* Accesor for Singleton.  We shouldn't need to use this since member variables are static. */
+    /* Accessor for Singleton.  We shouldn't need to use this since member variables are static. */
     public Configs get(){
         return _instance;
     }

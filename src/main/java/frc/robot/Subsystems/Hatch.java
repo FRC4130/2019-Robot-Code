@@ -7,8 +7,8 @@ import frc.robot.Robots.RobotMap;
 public class Hatch {
 
     public DoubleSolenoid hatch;
-    public final Value closed = Value.kReverse;
-    public final Value open = Value.kForward;
+    public final Value closed = Value.kForward;
+    public final Value open = Value.kReverse;
 
     public Hatch() {
 
@@ -17,7 +17,7 @@ public class Hatch {
 
     }
 
-    public void driveDirect(Value vl) {
+    public void set(Value vl) {
 
         hatch.set(vl);
 
@@ -25,7 +25,7 @@ public class Hatch {
 
     public void disable() {
 
-        hatch.set(closed);
+        hatch.set(Value.kOff);
 
     }
 

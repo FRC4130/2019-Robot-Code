@@ -12,52 +12,91 @@ public class WristTele implements ILoopable {
 
     Wrist _wrist;
     Joystick _joystick;
+    WristMode _actualMode;
+    WristMode _desiredmode;
+
+    double wristJoystick;
+    double intakeJoystick;
+    boolean manualOverride;
+
+    //We can initialize target to 0 since that's our home position.
+    double _closedLoopTarget = 0;
+    double _setpoint = 0;
 
     public WristTele() {
-
         _wrist = Subsystems.wrist;
         _joystick = RobotMap.operatorJoystick;
-
+        _actualMode = WristMode.Encoder;
+        _desiredmode = WristMode.Encoder;
     }
 
     public void onStart() {
 
         System.out.println("[INFO] Teleop Wrist cnontrols have started");
 
+        updateInputs();
         _wrist.setNeutralMode(NeutralMode.Brake);
 
     }
 
     public void onLoop() {
+        updateInputs();
+        updateMode();
+        updateClosedLoopTarget();
+        updateWrist();
+        updateIntake();
+    }
 
-        _wrist.driveDirect(_joystick.getRawAxis(1)*-1);
+    private void updateInputs() {
+        //wristJoystick = _joystick.getRawAxis(1)*-1;
+        intakeJoystick = _joystick.getRawAxis(RobotMap.kIntakeJoystickAxis);
+        manualOverride = _joystick.getRawButton(5);
+    }
 
-        if(_joystick.getRawButton(7)) {
-
-            _wrist.suck();
-
+    private void updateMode() {
+        if(manualOverride) {
+            _actualMode = WristMode.Manual;
         }
+        else _actualMode = WristMode.Encoder;
+    }
 
-        else if(_joystick.getRawButton(8)) {
+    private void updateClosedLoopTarget(){
+        _closedLoopTarget = Subsystems.arm.getCurrentTarget().wrist;
+    }
 
-            _wrist.spit();
-
+    private void updateWrist() {
+        switch(_actualMode) {
+            case Encoder:
+                /* Do nothing for now.  We'll need to 
+                implement a case structure/value checking when we start using
+                Pigeon and switching back and forth between modes.
+                */
+                _setpoint = _closedLoopTarget;
+                break;
+            case Pitch:
+                //This mode currently isn't supported.
+                _actualMode = WristMode.Manual;
+                _setpoint = 0;
+                break;
+            case Manual:
+                _setpoint = wristJoystick;
+                break;
         }
+        _wrist.set(_actualMode, _setpoint);
+    }
 
+    private void updateIntake() {
+        _wrist.setIntake(intakeJoystick);
     }
 
     public boolean isDone() {
-
         return false;
-
     }
 
     public void onStop() {
-
         System.out.println("[WARNING] Wrist Tele controls have Stopped");
 
         _wrist.setNeutralMode(NeutralMode.Brake);
         _wrist.driveDirect(0);
-
     }
 }
