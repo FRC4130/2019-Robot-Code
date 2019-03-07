@@ -43,14 +43,14 @@ public class Positions{
         hatch.ship.arm = 500;
         hatch.ship.wrist = -2200;
 
-        hatch.levelOne.arm = 500;
-        hatch.levelOne.wrist = -2200;
+        hatch.levelOne.arm = 425;
+        hatch.levelOne.wrist = -2000;
 
         hatch.levelTwo.arm = 1350;
-        hatch.levelTwo.wrist = -2600;
+        hatch.levelTwo.wrist = -2400;
 
         hatch.levelThree.arm = 2370;
-        hatch.levelThree.wrist = -3080;
+        hatch.levelThree.wrist = -2850;
 
         /* --- Positions when handling Hatch Panels from the Floor --- */
         floorHatch.floor.arm = 0;
