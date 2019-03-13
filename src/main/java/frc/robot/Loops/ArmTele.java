@@ -8,11 +8,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robots.RobotMap;
 import frc.robot.Robots.Subsystems;
 import frc.robot.Subsystems.Arm;
+import frc.robot.Subsystems.Wrist;
 
 public class ArmTele implements ILoopable {
 
     Arm  _arm;
     Joystick _joystick;
+    Wrist _wrist;
 
     boolean manualOverride;
     double manualJoystick;
@@ -29,6 +31,11 @@ public class ArmTele implements ILoopable {
 
     boolean overrideHatchPanelFromFloor;
     boolean overrideUseCargo;
+
+    boolean hatchPrevious;
+    boolean hatch;
+    boolean cargoPrevious;
+    boolean cargo;
 
     double intakeThrottle;
 
@@ -50,21 +57,34 @@ public class ArmTele implements ILoopable {
         updateTarget();
         updateArm();
         ManualDrive();
+
+        // if(Subsystems.wrist.getCargoLimitSwitch()) {
+        //     _wrist.setIntake(0);
+        // }
+
     }
 
     public void updateInputs(){
         manualOverride = false;
         manualJoystick = 0;
 
-        if(_joystick.getRawButtonPressed(RobotMap.kFloorHatchOverrideButtonID)){
+        hatchPrevious = hatch;
+        hatch = _joystick.getRawButton(RobotMap.kFloorHatchOverrideButtonID);
+        
+        cargoPrevious = cargo;
+        cargo = _joystick.getRawButton(RobotMap.kOverrideCargoLimitSwitchButtonID);
+
+        if(hatch && !hatchPrevious){
             if(overrideHatchPanelFromFloor){overrideHatchPanelFromFloor = false;}
             else{overrideHatchPanelFromFloor = true;}
         }
 
-        if(_joystick.getRawButtonPressed(RobotMap.kFloorHatchButtonID)){
+        if(cargo && !cargoPrevious){
             if(overrideUseCargo){overrideUseCargo = false;}
             else{overrideUseCargo = true;}
         }
+
+        SmartDashboard.putBoolean("Hatch Floor Override", overrideHatchPanelFromFloor);
 
         goHome = _joystick.getRawButton(RobotMap.kGoToHomeButtonID);
 
@@ -74,7 +94,8 @@ public class ArmTele implements ILoopable {
         goToLevelTwo = _joystick.getRawButton(RobotMap.kLevelTwoButtonID);
         goToLevelThree = _joystick.getRawButton(RobotMap.kLevelThreeButtonID);
 
-        useCargo = overrideUseCargo; //|| Subsystems.wrist.getCargoLimitSwitch();
+        useCargo = overrideUseCargo || Subsystems.wrist.getCargoLimitSwitch() || _joystick.getRawButton(RobotMap.kFloorCargoButtonID);
+        SmartDashboard.putBoolean("Cargo  Override", overrideUseCargo);
 
         goToCargoShip = _joystick.getRawButton(RobotMap.kCargoShipButtonID);
         //Write this to the smart dashboard so we know if we're using Cargo

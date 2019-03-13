@@ -9,6 +9,7 @@ package frc.robot;
 
 import com.ctre.phoenix.schedulers.ConcurrentScheduler;
 
+import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robots.Loops;
@@ -31,8 +32,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
 
-    SmartDashboard.putNumber("Driver Key", Subsystems.driveTrain.getLeftPos());
-
+    SmartDashboard.putNumber("Battery Voltage", RobotController.getBatteryVoltage());
   }
 
 

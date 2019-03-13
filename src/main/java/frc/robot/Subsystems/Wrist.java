@@ -53,7 +53,7 @@ public class  Wrist {
     public void setNeutralMode(NeutralMode nm) {
 
         wrist.setNeutralMode(nm);
-
+        intake.setNeutralMode(nm);
     }
 
     /**

@@ -4,7 +4,12 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.kauailabs.navx.frc.AHRS;
 
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.PIDController;
+import edu.wpi.first.wpilibj.PIDOutput;
+import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robots.RobotMap;
 
@@ -18,7 +23,19 @@ public class DriveTrain {
     private TalonSRX rightDrive;
     private TalonSRX rightDrive2;
 
+    AHRS ahrs;
+
+    static final double kToleranceDegrees = 2.0f;
+
     private final int kTimeoutMS = 10;
+    double kTargetAngleDegrees = 0.0f;
+
+    static final double kP = 3;
+    static final double kI = 1;
+    static final double kD = 8;
+    static final double kF = 0.00;
+
+    PIDController turController;
 
     //Configuring all of the differnent things used in the Drivetrain Class
     public DriveTrain() {
@@ -85,6 +102,13 @@ public class DriveTrain {
 
     }
 
+    public void arcadeDrive(double throttle, double turn) {
+
+        driveDirect(throttle+turn, throttle-turn);
+
+    }
+
+
     // Motion Magic setting, but this will be used in another class at a later date
     public void setMagic(int cruiseVelocity, int acceleration) {
 
@@ -137,5 +161,4 @@ public class DriveTrain {
         rightDrive.setSelectedSensorPosition(0, 0, Timeout);
 
     }
-
 }
