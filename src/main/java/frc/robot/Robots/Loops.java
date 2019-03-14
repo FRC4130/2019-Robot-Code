@@ -6,7 +6,7 @@ import frc.robot.Loops.ArmTele;
 import frc.robot.Loops.ClimbTele;
 import frc.robot.Loops.DriveTele;
 import frc.robot.Loops.HatchTele;
-// import frc.robot.Loops.LimelightTele;
+import frc.robot.Loops.NavX;
 import frc.robot.Loops.WristTele;
 
 public class Loops {
@@ -22,7 +22,7 @@ public class Loops {
         teleop.add(new ClimbTele());
         teleop.add(new WristTele());
         teleop.add(new HatchTele());
-        // teleop.add(new LimelightTele());
+        teleop.add(new NavX());
 
         System.out.println("Scheduled");
 
