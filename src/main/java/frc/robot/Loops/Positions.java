@@ -24,17 +24,17 @@ public class Positions{
         cargo.floor.arm = 282;
         cargo.floor.wrist = -2564;
 
-        cargo.ship.arm = 500;
+        cargo.ship.arm = 1010;
         cargo.ship.wrist = -2000;
 
-        cargo.levelOne.arm = 500;
-        cargo.levelOne.wrist = -0;
+        cargo.levelOne.arm = 650;
+        cargo.levelOne.wrist = -2033;
 
-        cargo.levelTwo.arm = 13500;
-        cargo.levelTwo.wrist = -0;
+        cargo.levelTwo.arm = 1550;
+        cargo.levelTwo.wrist = -2400;
 
         cargo.levelThree.arm = 2370;
-        cargo.levelThree.wrist = -0;
+        cargo.levelThree.wrist = -2700;
         
         /* --- Positions when handling Hatch Panels --- */
 
@@ -55,15 +55,14 @@ public class Positions{
         hatch.levelThree.wrist = -3100;
 
         /* --- Positions when handling Hatch Panels from the Floor --- */
-        floorHatch.floor.arm = 0;
-        floorHatch.floor.wrist = 0;
+        floorHatch.floor.arm = 107;
+        floorHatch.floor.wrist = -2139;
 
         floorHatch.ship.arm = 0;
-
         floorHatch.ship.wrist = 0;
 
-        floorHatch.levelOne.arm = 0;
-        floorHatch.levelOne.wrist = 0;
+        floorHatch.levelOne.arm = 110;
+        floorHatch.levelOne.wrist = -1076;
 
         floorHatch.levelTwo.arm = 0;
         floorHatch.levelTwo.wrist = 0;
