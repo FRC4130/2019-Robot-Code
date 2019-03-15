@@ -7,30 +7,55 @@ import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.Robots.RobotMap;
 import frc.robot.Robots.Subsystems;
 import frc.robot.Subsystems.Climb;
+import frc.robot.Subsystems.ClimbAssist;
 
 public class ClimbTele implements ILoopable {
 
     Climb _climb;
     Joystick _joystick;
+    Joystick _driveJoystick;
+    ClimbAssist _assist;
+
+    boolean openClimbAssist = false;
 
     public ClimbTele() {
 
         _climb = Subsystems.climb;
-        _joystick = RobotMap.operatorJoystick;
+        _joystick = RobotMap.driverJoystick;
+        _assist = Subsystems.climbAssist;
 
     }
 
     public void onStart() {
 
         System.out.println("[INFO] Teleop Climb Controls have started");
-        _climb.setNeutralMode(NeutralMode.Coast);
+        _climb.setNeutralMode(NeutralMode.Brake);
+        _assist.set(_assist.closed);
 
     }
 
     public void onLoop() {
 
-        _climb.driveDirect(_joystick.getRawAxis(5)*-1);
-        _climb.setNeutralMode(NeutralMode.Brake);
+        input();
+        updateClimbAssistSolenoid();
+
+    }
+
+    public void input() {
+        openClimbAssist = _joystick.getRawButtonPressed(RobotMap.kClimbButtonID);
+
+    }
+
+    private void updateClimbAssistSolenoid() {
+
+    if(openClimbAssist) {
+        _assist.set(_assist.open);
+
+        }
+        else {
+            _assist.set(_assist.closed);
+
+        }
 
     }
 
@@ -41,9 +66,10 @@ public class ClimbTele implements ILoopable {
 
     public void onStop() {
 
-        System.out.println("[WARNING] Climb Teleop Controls have Stoped");
+        System.out.println("[WARNING] Climb Teleop Controls have Stopped");
         _climb.setNeutralMode(NeutralMode.Brake);
         _climb.driveDirect(0);
+        _assist.set(_assist.closed);
 
     }
 

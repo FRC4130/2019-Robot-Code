@@ -29,6 +29,7 @@ public class RobotMap {
 
     /* --- Solenoid Objects --- */
     public static DoubleSolenoid hatch;
+    public static DoubleSolenoid climb;
 
     /* Joystick Objects --- */
     public static Joystick driverJoystick;
@@ -51,6 +52,9 @@ public class RobotMap {
     public static final int kHatchForwardSolenoidID = 5;
     public static final int kHatchReverseSolenoidID = 6;
 
+    public static final int kClimbForwardSolenoidID = 2;
+    public static final int kClimbReverseSolenoidID = 3;
+
     /* --- Joystick IDs --- */
     public static final int kDriverJoystickID = 0;
     public static final int kOperatorJoystickID = 1;
@@ -61,6 +65,7 @@ public class RobotMap {
     public static final int kRightDriveAxisID = 5;
     public static final int kLimeLightAssistButtonID = 0;
     public static final int kLimeLightOverrideButtonID = 0;
+    public static final int kClimbButtonID = 14;
 
     /* --- Operator Button/Axis IDs --- */
     //TODO: Map Operator Gamepad inputs here.

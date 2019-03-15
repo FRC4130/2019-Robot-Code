@@ -39,11 +39,17 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
 
+    teleop = new ConcurrentScheduler();
+    Loops.sTeleop(teleop);
+    teleop.startAll();
+
   }
 
 
   @Override
   public void autonomousPeriodic() {
+
+    teleop.process();
 
   }
 
