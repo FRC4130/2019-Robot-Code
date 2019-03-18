@@ -59,8 +59,10 @@ public class DriveTele implements ILoopable {
 
     //Limelight - Limelight Autonomous Aim/Seek/Range w/ button
     LimelightTracking();
-    double steer = -_joystick.getX(Hand.kRight);
-    double drive = -_joystick.getY(Hand.kLeft);
+
+
+    double steer = -_joystick.getX();
+    double drive = _joystick.getY();
     boolean auto = _joystick.getRawButton(2);
     steer *= 1;
     drive *= 1;
@@ -73,7 +75,7 @@ public class DriveTele implements ILoopable {
       else {
       NetworkTableInstance.getDefault().getTable("limelight").getEntry("camMode").setNumber(0);
       NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(3);
-         _drive.arcadeDrive(drive,-steer);
+      _drive.driveDirect(_joystick.getRawAxis(1)*-1, _joystick.getRawAxis(5)*-1);
       }
     }
     else {
@@ -102,15 +104,14 @@ public class DriveTele implements ILoopable {
         else{ 
 
             _drive.driveDirect(_joystick.getRawAxis(1)*-1, _joystick.getRawAxis(5)*-1);
-
         }
     }
 }
     public void LimelightTracking() {
 
     // These numbers must be tuned...
-    final double STEER_K = 0.10; // How hard to turn toward the target
-    final double DRIVE_K = 0.40; // How hard to drive fwd toward the target
+    final double STEER_K = .30; // How hard to turn toward the target
+    final double DRIVE_K = 0.50; // How hard to drive fwd toward the target
     final double DESIRED_TARGET_AREA = 2.5; // Area of the target when the robot reaches the wall
     final double MAX_DRIVE = .70; // Speed limit so we don't drive too fast
     double tv = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tv").getDouble(0);

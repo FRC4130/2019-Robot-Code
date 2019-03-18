@@ -106,6 +106,7 @@ public class RobotMap {
 
         //Solenoid for hatch panels
         hatch = new DoubleSolenoid(kHatchForwardSolenoidID, kHatchReverseSolenoidID);
+        climb = new DoubleSolenoid(kClimbForwardSolenoidID, kClimbReverseSolenoidID);
 
         driverJoystick = new Joystick(kDriverJoystickID);
         operatorJoystick = new Joystick(kOperatorJoystickID);

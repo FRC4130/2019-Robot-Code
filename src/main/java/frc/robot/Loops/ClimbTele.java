@@ -3,7 +3,9 @@ package frc.robot.Loops;
 import com.ctre.phoenix.ILoopable;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Relay.Value;
 import frc.robot.Robots.RobotMap;
 import frc.robot.Robots.Subsystems;
 import frc.robot.Subsystems.Climb;
@@ -15,6 +17,7 @@ public class ClimbTele implements ILoopable {
     Joystick _joystick;
     Joystick _driveJoystick;
     ClimbAssist _assist;
+
 
     boolean openClimbAssist = false;
 
@@ -42,7 +45,8 @@ public class ClimbTele implements ILoopable {
     }
 
     public void input() {
-        openClimbAssist = _joystick.getRawButtonPressed(RobotMap.kClimbButtonID);
+        openClimbAssist = _joystick.getRawButton(RobotMap.kClimbButtonID);
+
 
     }
 
@@ -50,10 +54,11 @@ public class ClimbTele implements ILoopable {
 
     if(openClimbAssist) {
         _assist.set(_assist.open);
+        _climb.driveDirect(_joystick.getRawAxis(1)*-1);
 
         }
         else {
-            _assist.set(_assist.closed);
+           _assist.set(_assist.closed);
 
         }
 
