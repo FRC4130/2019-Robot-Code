@@ -101,7 +101,7 @@ public class DriveTrain {
 
     public void arcadeDrive(double throttle, double turn) {
 
-        driveDirect(throttle+turn, throttle-turn);
+        driveDirect(throttle-turn, throttle+turn);
 
     }
 
