@@ -57,7 +57,6 @@ public class Robot extends TimedRobot {
 
     teleop = new ConcurrentScheduler();
     Loops.sTeleop(teleop);
-    teleop.startAll();
 
   }
 

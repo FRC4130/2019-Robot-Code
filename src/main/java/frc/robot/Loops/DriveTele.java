@@ -99,9 +99,9 @@ public class DriveTele implements ILoopable {
     public void LimelightTracking() {
 
         // These numbers must be tuned...
-        final double STEER_K = 0.025; // How hard to turn toward the target
-        final double DRIVE_K = 0.20; // How hard to drive fwd toward the target
-        final double DESIRED_TARGET_AREA = 2.5; // Area of the target when the robot reaches the wall
+        final double STEER_K = 0.035; // How hard to turn toward the target
+        final double DRIVE_K = 0.30; // How hard to drive fwd toward the target
+        final double DESIRED_TARGET_AREA = 2.0; // Area of the target when the robot reaches the wall
         final double MAX_DRIVE = .70; // Speed limit so we don't drive too fast
         double tv = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tv").getDouble(0);
         double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);

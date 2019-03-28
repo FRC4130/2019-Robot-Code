@@ -13,7 +13,7 @@ public class Hatch {
     public Hatch() {
 
         hatch = RobotMap.hatch;
-        hatch.set(closed);
+        hatch.set(open);
 
     }
 

@@ -17,15 +17,15 @@ public class Positions{
         floorHatch = new ScoringPositions();
 
         /* --- Home Position --- */
-        home.arm = -75;
-        home.wrist = 0;
+        home.arm = -70;
+        home.wrist = -0;
 
         /* --- Positions when handling Cargo --- */
         cargo.floor.arm = 282;
-        cargo.floor.wrist = -2564;
+        cargo.floor.wrist = -2364;
 
-        cargo.ship.arm = 1800;
-        cargo.ship.wrist = -3400;
+        cargo.ship.arm = 1750;
+        cargo.ship.wrist = -3500;
 
         cargo.levelOne.arm = 650;
         cargo.levelOne.wrist = -2033;
@@ -45,13 +45,13 @@ public class Positions{
         hatch.ship.arm = 500;
         hatch.ship.wrist = -2200;
 
-        hatch.levelOne.arm = 450;
-        hatch.levelOne.wrist = -2200;
+        hatch.levelOne.arm = 200;
+        hatch.levelOne.wrist = -2100;
 
-        hatch.levelTwo.arm = 1350;
+        hatch.levelTwo.arm = 1200;
         hatch.levelTwo.wrist = -2600;
 
-        hatch.levelThree.arm = 2370;
+        hatch.levelThree.arm = 2350;
         hatch.levelThree.wrist = -3100;
 
         /* --- Positions when handling Hatch Panels from the Floor --- */

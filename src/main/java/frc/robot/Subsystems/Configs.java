@@ -22,12 +22,13 @@ public class Configs{
     private static Configs _instance = new Configs();
 
     /* Designated "private" for Singleton instance.  DO NOT change to public.  */
+    
     private Configs(){
 
         /* --- Arm --- */
         arm.primaryPID.selectedFeedbackSensor = FeedbackDevice.CTRE_MagEncoder_Relative;
         arm.slot0.kF = 4.92;
-        arm.slot0.kP = 10;
+        arm.slot0.kP = 10.2;
         arm.motionAcceleration = 250;
         arm.motionCruiseVelocity = 350;
         arm.clearPositionOnLimitR = true;
@@ -35,8 +36,9 @@ public class Configs{
 
         /* --- Wrist --- */
         wrist.primaryPID.selectedFeedbackSensor = FeedbackDevice.CTRE_MagEncoder_Relative;
-        wrist.slot0.kF = 2.7;
-        wrist.slot0.kP = 17;
+        wrist.slot0.kF = 2.39;
+        wrist.slot0.kP = 14.06;
+        wrist.slot0.kD = 76;
         wrist.motionAcceleration = 200;
         wrist.motionCruiseVelocity = 200;
         wrist.remoteFilter0.remoteSensorDeviceID = RobotMap.kWristMotor2ID;
