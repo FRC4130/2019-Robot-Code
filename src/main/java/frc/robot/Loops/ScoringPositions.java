@@ -6,4 +6,5 @@ public class ScoringPositions{
     public PositionSet levelOne = new PositionSet();
     public PositionSet levelTwo = new PositionSet();
     public PositionSet levelThree = new PositionSet();
+    public PositionSet manual = new PositionSet();
 }

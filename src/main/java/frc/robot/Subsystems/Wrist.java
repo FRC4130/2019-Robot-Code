@@ -128,6 +128,11 @@ public class  Wrist {
         intake.set(ControlMode.PercentOutput, throttle);
     }
 
+    // public void driveDirectWrist(double throttle) {
+    //     wrist.set(ControlMode.PercentOutput, throttle);
+
+    // }
+
     /**
      * Gets the state of the cargo presence limit switch.
      * Assumes switch is normally open.

@@ -88,7 +88,7 @@ public class NavX  implements ILoopable, PIDOutput{
         }
         
         /**Rotate to Angle */
-        if(_joystick.getPOV()>-1) {   //changed 3/23 by sjp
+        if(_joystick.getPOV()>-1 && _joystick.getRawButton(7)) {   //changed 3/23 by sjp
 
             if(!turnController.isEnabled()) {
 

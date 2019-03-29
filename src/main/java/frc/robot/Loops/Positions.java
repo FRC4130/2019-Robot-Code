@@ -7,11 +7,13 @@ public class Positions{
     public static ScoringPositions floorHatch;
 
     public static PositionSet home;
+    public static PositionSet manual;
 
     private static Positions _instance = new Positions();
 
     private Positions(){
         home = new PositionSet();
+        manual = new PositionSet();
         cargo = new ScoringPositions();
         hatch = new ScoringPositions();
         floorHatch = new ScoringPositions();
@@ -20,9 +22,13 @@ public class Positions{
         home.arm = -70;
         home.wrist = -0;
 
+        /*---Manual Home---*/
+        manual.arm = 500;
+        manual.wrist = 3000;
+
         /* --- Positions when handling Cargo --- */
-        cargo.floor.arm = 282;
-        cargo.floor.wrist = -2364;
+        cargo.floor.arm = 262;
+        cargo.floor.wrist = -2500;
 
         cargo.ship.arm = 1750;
         cargo.ship.wrist = -3500;
@@ -49,14 +55,14 @@ public class Positions{
         hatch.levelOne.wrist = -2100;
 
         hatch.levelTwo.arm = 1200;
-        hatch.levelTwo.wrist = -2600;
+        hatch.levelTwo.wrist = -2500;
 
         hatch.levelThree.arm = 2350;
         hatch.levelThree.wrist = -3100;
 
         /* --- Positions when handling Hatch Panels from the Floor --- */
-        floorHatch.floor.arm = 107;
-        floorHatch.floor.wrist = -2139;
+        floorHatch.floor.arm = 0;
+        floorHatch.floor.wrist = -0;
 
         floorHatch.ship.arm = 0;
         floorHatch.ship.wrist = 0;
