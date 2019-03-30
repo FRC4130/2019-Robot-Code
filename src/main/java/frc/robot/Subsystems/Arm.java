@@ -15,6 +15,7 @@ public class Arm {
    private TalonSRX arm;
    private TalonSRX arm2;
 
+   private final int kTimeout = 5;
    private final int kPosBandwidth = 10;
 
    PositionSet currentTarget;

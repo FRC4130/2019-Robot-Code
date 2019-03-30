@@ -20,7 +20,7 @@ public class Positions{
 
         /* --- Home Position --- */
         home.arm = -70;
-        home.wrist = -0;
+        home.wrist = 70;
 
         /*---Manual Home---*/
         manual.arm = 500;

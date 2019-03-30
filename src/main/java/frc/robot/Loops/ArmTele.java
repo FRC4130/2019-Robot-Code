@@ -1,3 +1,4 @@
+
 package frc.robot.Loops;
 
 import com.ctre.phoenix.ILoopable;
@@ -111,7 +112,7 @@ public class ArmTele implements ILoopable {
         }
         else{
             if(manualHome) {currentTarget = Positions.manual;}
-            else if(useCargo){currentGamePiecePositions = Positions.cargo;}
+            if(useCargo){currentGamePiecePositions = Positions.cargo;}
             else if (overrideHatchPanelFromFloor){
                 currentGamePiecePositions = Positions.floorHatch;
             }
