@@ -17,9 +17,6 @@ public class  Wrist {
     
     private VictorSPX intake;
 
-    private final int intakeSpeed = 1;
-    private final int outtakeSpeed = -1;
-
     private WristMode currentMode = WristMode.Encoder;
     private int encSlot = 0;
     private int pitchSlot = 1;
@@ -115,14 +112,6 @@ public class  Wrist {
             currentMode = newMode;
         }
     }
-
-    // public void suck() {
-    //     intake.set(ControlMode.PercentOutput, intakeSpeed);
-    // }
-
-    // public void spit() {
-    //     intake.set(ControlMode.PercentOutput, outtakeSpeed);
-    // }
 
     public void setIntake(double throttle){
         intake.set(ControlMode.PercentOutput, throttle);
