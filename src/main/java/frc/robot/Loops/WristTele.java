@@ -1,8 +1,10 @@
 package frc.robot.Loops;
 
 import com.ctre.phoenix.ILoopable;
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.Robots.RobotMap;
 import frc.robot.Robots.Subsystems;
@@ -28,6 +30,7 @@ public class WristTele implements ILoopable {
         _joystick = RobotMap.operatorJoystick;
         _actualMode = WristMode.Encoder;
         _desiredmode = WristMode.Encoder;
+        manualOverride = _joystick.getRawButton(5);
     }
 
     public void onStart() {
@@ -45,6 +48,7 @@ public class WristTele implements ILoopable {
         updateClosedLoopTarget();
         updateWrist();
         updateIntake();
+
     }
 
     private void updateInputs() {
@@ -56,6 +60,7 @@ public class WristTele implements ILoopable {
     private void updateMode() {
         if(manualOverride) {
             _actualMode = WristMode.Manual;
+            _wrist.resetFWDEncoder();
         }
         else _actualMode = WristMode.Encoder;
     }
@@ -79,7 +84,7 @@ public class WristTele implements ILoopable {
                 _setpoint = 0;
                 break;
             case Manual:
-                _setpoint = wristJoystick;
+                _setpoint = 0.40;
                 break;
         }
         _wrist.set(_actualMode, _setpoint);

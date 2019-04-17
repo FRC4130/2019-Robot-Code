@@ -64,20 +64,20 @@ public class DriveTele implements ILoopable {
         steer *= 1;
         drive *= 1;
         if (auto) {
-            NetworkTableInstance.getDefault().getTable("limelight").getEntry("camMode").setNumber(0);
-            NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(3);
+            NetworkTableInstance.getDefault().getTable("limelight").getEntry("camMode").setNumber(1); //0
+            NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(1); //3
             if (m_LimelightHasValidTarget) {
                 _drive.arcadeDrive(m_LimelightDriveCommand, -m_LimelightSteerCommand);
             }
             else {
-                NetworkTableInstance.getDefault().getTable("limelight").getEntry("camMode").setNumber(0);
-                NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(3);
+                NetworkTableInstance.getDefault().getTable("limelight").getEntry("camMode").setNumber(1); //0
+                NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(1); //3
                 _drive.arcadeDrive(drive,steer);
             }
         }
         else {
-            NetworkTableInstance.getDefault().getTable("limelight").getEntry("camMode").setNumber(1);
-            NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(1);
+            NetworkTableInstance.getDefault().getTable("limelight").getEntry("camMode").setNumber(1); //0
+            NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(1); //3
 
             if(_joystick.getRawButton(3)) {
                 _drive.driveDirect(0, 0);

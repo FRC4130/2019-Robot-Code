@@ -42,7 +42,7 @@ public class Robot extends TimedRobot {
     teleop = new ConcurrentScheduler();
     Loops.sTeleop(teleop);
     teleop.startAll();
-
+    Subsystems.wrist.disableZeroOnForwardLim();
   }
 
 
@@ -58,6 +58,7 @@ public class Robot extends TimedRobot {
     teleop = new ConcurrentScheduler();
     Loops.sTeleop(teleop);
     teleop.startAll();
+    Subsystems.wrist.disableZeroOnForwardLim();
 
   }
 
@@ -65,6 +66,10 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
 
     teleop.process();
+  }
 
+  @Override
+  public void disabledInit(){
+    Subsystems.wrist.enableZeroOnForwardLim(0);
   }
 }

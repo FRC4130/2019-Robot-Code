@@ -111,7 +111,7 @@ public class ArmTele implements ILoopable {
             currentTarget = Positions.home;
         }
         else{
-            if(manualHome) {currentTarget = Positions.manual;}
+            // if(manualHome) {currentTarget = Positions.manual;}
             if(useCargo){currentGamePiecePositions = Positions.cargo;}
             else if (overrideHatchPanelFromFloor){
                 currentGamePiecePositions = Positions.floorHatch;

@@ -135,4 +135,21 @@ public class  Wrist {
         return wrist.getSelectedSensorPosition();
     }
 
+    public boolean getWristFwdLim() {
+        return wrist.getSensorCollection().isFwdLimitSwitchClosed();
+
+    }
+
+    public void resetFWDEncoder() {
+        wrist.setSelectedSensorPosition(0);
+
+    }
+
+    public void enableZeroOnForwardLim(int TimeoutMS) {
+        wrist.configClearPositionOnLimitF(true, TimeoutMS);
+    }
+
+    public void disableZeroOnForwardLim() {
+        wrist.configClearPositionOnLimitF(true, 0);
+    }
 }
