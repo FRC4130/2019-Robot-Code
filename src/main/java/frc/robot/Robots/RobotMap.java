@@ -3,6 +3,8 @@ package frc.robot.Robots;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
+import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Joystick;
 
@@ -31,6 +33,9 @@ public class RobotMap {
     public static DoubleSolenoid hatch;
     public static DoubleSolenoid climb;
 
+    /* --- Digital Inputs ---*/
+    public static DigitalInput wristInput;
+
     /* Joystick Objects --- */
     public static Joystick driverJoystick;
     public static Joystick operatorJoystick;
@@ -54,6 +59,9 @@ public class RobotMap {
 
     public static final int kClimbForwardSolenoidID = 2;
     public static final int kClimbReverseSolenoidID = 3;
+
+    /* --- Digital Input IDs ---*/
+    public static final int kWristInputID = 0;
 
     /* --- Joystick IDs --- */
     public static final int kDriverJoystickID = 0;
@@ -108,6 +116,8 @@ public class RobotMap {
         //Solenoid for hatch panels
         hatch = new DoubleSolenoid(kHatchForwardSolenoidID, kHatchReverseSolenoidID);
         climb = new DoubleSolenoid(kClimbForwardSolenoidID, kClimbReverseSolenoidID);
+
+        wristInput = new DigitalInput(kWristInputID);
 
         driverJoystick = new Joystick(kDriverJoystickID);
         operatorJoystick = new Joystick(kOperatorJoystickID);

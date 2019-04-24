@@ -21,6 +21,8 @@ public class WristTele implements ILoopable {
     double intakeJoystick;
     boolean manualOverride;
 
+    public final boolean WristLimit = RobotMap.wristInput.get();
+
     //We can initialize target to 0 since that's our home position.
     double _closedLoopTarget = 0;
     double _setpoint = 0;
@@ -60,9 +62,18 @@ public class WristTele implements ILoopable {
     private void updateMode() {
         if(manualOverride) {
             _actualMode = WristMode.Manual;
+
+            if(!WristLimit) {
             _wrist.resetFWDEncoder();
+            _wrist.driveDirect(0);
+            }
+            else if(WristLimit) {
+                _actualMode = WristMode.Manual;
+            }
         }
-        else _actualMode = WristMode.Encoder;
+        else {
+             _actualMode = WristMode.Encoder;
+        }       
     }
 
     private void updateClosedLoopTarget(){
@@ -91,7 +102,7 @@ public class WristTele implements ILoopable {
     }
 
     private void updateIntake() {
-        _wrist.setIntake(intakeJoystick*-1);
+        _wrist.setIntake(intakeJoystick);
     }
 
     public boolean isDone() {

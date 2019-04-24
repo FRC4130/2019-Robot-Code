@@ -44,6 +44,8 @@ public class ArmTele implements ILoopable {
     PositionSet currentTarget = Positions.home;
     ScoringPositions currentGamePiecePositions = Positions.hatch;
 
+    public final boolean WristLimitSwitch = RobotMap.wristInput.get();
+
     public ArmTele() {
         _arm = Subsystems.arm;
         _joystick = RobotMap.operatorJoystick;
@@ -109,9 +111,17 @@ public class ArmTele implements ILoopable {
     public void updateTarget(){
         if(goHome){
             currentTarget = Positions.home;
+
+            if(WristLimitSwitch) {
+                _wrist.resetFWDEncoder();
+
+            }
+            else if(!WristLimitSwitch) {
+                currentTarget = Positions.home;
+            }
+
         }
         else{
-            // if(manualHome) {currentTarget = Positions.manual;}
             if(useCargo){currentGamePiecePositions = Positions.cargo;}
             else if (overrideHatchPanelFromFloor){
                 currentGamePiecePositions = Positions.floorHatch;
