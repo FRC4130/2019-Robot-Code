@@ -102,7 +102,7 @@ public class WristTele implements ILoopable {
     }
 
     private void updateIntake() {
-        _wrist.setIntake(intakeJoystick);
+        _wrist.setIntake(intakeJoystick*-1);
     }
 
     public boolean isDone() {

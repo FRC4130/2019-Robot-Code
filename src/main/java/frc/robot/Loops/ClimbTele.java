@@ -53,11 +53,18 @@ public class ClimbTele implements ILoopable {
 
     if(openClimbAssist) {
         _assist.set(_assist.open);
-        _climb.driveDirect(_joystick.getRawAxis(1)*-1);
 
+        if(Math.abs(_joystick.getThrottle()) < -0.1) {
+            _climb.driveDirect(0);
         }
+        
         else {
-           _assist.set(_assist.closed);
+            _climb.driveDirect(_joystick.getRawAxis(1)*-1);
+        }
+    }
+    else {
+        _assist.set(_assist.closed);
+        _climb.driveDirect(0);
 
         }
 

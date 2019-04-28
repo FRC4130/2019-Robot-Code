@@ -145,11 +145,11 @@ public class  Wrist {
 
     }
 
-    public void enableZeroOnForwardLim(int TimeoutMS) {
-        wrist.configClearPositionOnLimitF(true, TimeoutMS);
-    }
+    // public void enableZeroOnForwardLim(int TimeoutMS) {
+    //     wrist.configClearPositionOnLimitF(true, TimeoutMS);
+    // }
 
-    public void disableZeroOnForwardLim() {
-        wrist.configClearPositionOnLimitF(true, 0);
-    }
+    // public void disableZeroOnForwardLim() {
+    //     wrist.configClearPositionOnLimitF(true, 0);
+    // }
 }

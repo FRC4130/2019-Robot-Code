@@ -7,6 +7,8 @@
 
 package frc.robot;
 
+import javax.swing.text.WrappedPlainView;
+
 import com.ctre.phoenix.schedulers.ConcurrentScheduler;
 
 import edu.wpi.first.wpilibj.RobotController;
@@ -15,6 +17,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robots.Loops;
 import frc.robot.Robots.RobotMap;
 import frc.robot.Robots.Subsystems;
+import frc.robot.Subsystems.Wrist;
 
 
 public class Robot extends TimedRobot {
@@ -26,6 +29,7 @@ public class Robot extends TimedRobot {
 
     RobotMap.Init();
     Subsystems.Init();
+    Subsystems.wrist.resetFWDEncoder();
 
   }
 
@@ -43,7 +47,8 @@ public class Robot extends TimedRobot {
     teleop = new ConcurrentScheduler();
     Loops.sTeleop(teleop);
     teleop.startAll();
-    Subsystems.wrist.disableZeroOnForwardLim();
+    Subsystems.wrist.resetFWDEncoder();
+    // Subsystems.wrist.disableZeroOnForwardLim();
   }
 
 
@@ -59,7 +64,8 @@ public class Robot extends TimedRobot {
     teleop = new ConcurrentScheduler();
     Loops.sTeleop(teleop);
     teleop.startAll();
-    Subsystems.wrist.disableZeroOnForwardLim();
+    Subsystems.wrist.resetFWDEncoder();
+    // Subsystems.wrist.disableZeroOnForwardLim();
 
   }
 
@@ -71,6 +77,6 @@ public class Robot extends TimedRobot {
 
   @Override
   public void disabledInit(){
-    Subsystems.wrist.enableZeroOnForwardLim(0);
+    // Subsystems.wrist.enableZeroOnForwardLim(0);
   }
 }
