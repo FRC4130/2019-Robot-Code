@@ -118,6 +118,7 @@ public class ArmTele implements ILoopable {
             }
             else if(!WristLimitSwitch) {
                 currentTarget = Positions.home;
+                
             }
 
         }
