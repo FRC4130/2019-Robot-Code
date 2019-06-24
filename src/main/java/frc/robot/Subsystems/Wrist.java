@@ -145,6 +145,11 @@ public class  Wrist {
 
     }
 
+    public void WristEncoder() {
+        wrist.getSelectedSensorPosition();
+
+    }
+
     // public void enableZeroOnForwardLim(int TimeoutMS) {
     //     wrist.configClearPositionOnLimitF(true, TimeoutMS);
     // }

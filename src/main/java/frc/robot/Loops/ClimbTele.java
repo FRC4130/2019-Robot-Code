@@ -9,6 +9,7 @@ import frc.robot.Robots.RobotMap;
 import frc.robot.Robots.Subsystems;
 import frc.robot.Subsystems.Climb;
 import frc.robot.Subsystems.ClimbAssist;
+import frc.robot.Subsystems.DriveTrain;
 
 public class ClimbTele implements ILoopable {
 
@@ -16,6 +17,7 @@ public class ClimbTele implements ILoopable {
     Joystick _joystick;
     Joystick _driveJoystick;
     ClimbAssist _assist;
+    DriveTrain _driveTrain;
 
 
     boolean openClimbAssist = false;
@@ -25,6 +27,7 @@ public class ClimbTele implements ILoopable {
         _climb = Subsystems.climb;
         _joystick = RobotMap.driverJoystick;
         _assist = Subsystems.climbAssist;
+        _driveTrain = Subsystems.driveTrain;
 
     }
 
@@ -56,10 +59,12 @@ public class ClimbTele implements ILoopable {
 
         if(Math.abs(_joystick.getThrottle()) < -0.1) {
             _climb.driveDirect(0);
+            // _driveTrain.driveDirect(0, 0);
         }
         
         else {
             _climb.driveDirect(_joystick.getRawAxis(1)*-1);
+            // _driveTrain.driveDirect(0, 0);
         }
     }
     else {

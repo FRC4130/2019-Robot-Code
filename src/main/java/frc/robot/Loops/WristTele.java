@@ -63,13 +63,14 @@ public class WristTele implements ILoopable {
         if(manualOverride) {
             _actualMode = WristMode.Manual;
 
-            if(!WristLimit) {
+            // if(!WristLimit) {
+            // _wrist.resetFWDEncoder();
+            // _wrist.driveDirect(0);
+            // }
+            // else if(WristLimit) {
+            //     _actualMode = WristMode.Manual;
+            // }
             _wrist.resetFWDEncoder();
-            _wrist.driveDirect(0);
-            }
-            else if(WristLimit) {
-                _actualMode = WristMode.Manual;
-            }
         }
         else {
              _actualMode = WristMode.Encoder;
@@ -104,6 +105,7 @@ public class WristTele implements ILoopable {
     private void updateIntake() {
         _wrist.setIntake(intakeJoystick*-1);
     }
+
 
     public boolean isDone() {
         return false;

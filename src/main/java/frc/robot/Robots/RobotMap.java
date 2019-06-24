@@ -55,7 +55,7 @@ public class RobotMap {
 
     /* --- Solenoid IDs --- */
     public static final int kHatchForwardSolenoidID = 5;
-    public static final int kHatchReverseSolenoidID = 6;
+    public static final int kHatchReverseSolenoidID = 7;
 
     public static final int kClimbForwardSolenoidID = 2;
     public static final int kClimbReverseSolenoidID = 3;

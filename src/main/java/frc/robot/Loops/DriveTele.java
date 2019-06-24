@@ -8,14 +8,17 @@ import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
+import frc.robot.Robots.Loops;
 import frc.robot.Robots.RobotMap;
 import frc.robot.Robots.Subsystems;
+import frc.robot.Subsystems.Climb;
 import frc.robot.Subsystems.DriveTrain;
 
 public class DriveTele implements ILoopable {
 
     DriveTrain _drive;
     Joystick _joystick;
+    Climb _climb;
 
     NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
     NetworkTableEntry tv = table.getEntry("tv");
@@ -30,6 +33,7 @@ public class DriveTele implements ILoopable {
 
         _drive = Subsystems.driveTrain;
         _joystick = RobotMap.driverJoystick;
+        _climb = Subsystems.climb;
 
     }
 
@@ -88,6 +92,11 @@ public class DriveTele implements ILoopable {
             else if (_joystick.getRawButton(5)) {
                 _drive.driveDirect(_joystick.getRawAxis(1)*-.20, _joystick.getRawAxis(5)*-.20);
             }
+
+            else if(_joystick.getRawButton(RobotMap.kClimbButtonID)) {
+                _drive.driveDirect(0, 0);
+
+            }
             else { 
                 _drive.driveDirect(_joystick.getRawAxis(1)*-1, _joystick.getRawAxis(5)*-1);
             }
@@ -101,7 +110,7 @@ public class DriveTele implements ILoopable {
         // These numbers must be tuned...
         final double STEER_K = 0.035; // How hard to turn toward the target
         final double DRIVE_K = 0.40; // How hard to drive fwd toward the target
-        final double DESIRED_TARGET_AREA = 2.40; // Area of the target when the robot reaches the wall
+        final double DESIRED_TARGET_AREA = 2.50; // Area of the target when the robot reaches the wall
         final double MAX_DRIVE = .70; // Speed limit so we don't drive too fast
         double tv = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tv").getDouble(0);
         double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);

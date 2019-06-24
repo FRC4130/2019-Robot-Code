@@ -51,7 +51,7 @@ public class Positions{
         hatch.ship.arm = 500;
         hatch.ship.wrist = -2200;
 
-        hatch.levelOne.arm = 240;
+        hatch.levelOne.arm = 260;
         hatch.levelOne.wrist = -2175;   
 
         hatch.levelTwo.arm = 1200;

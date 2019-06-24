@@ -49,6 +49,7 @@ public class ArmTele implements ILoopable {
     public ArmTele() {
         _arm = Subsystems.arm;
         _joystick = RobotMap.operatorJoystick;
+        _wrist = Subsystems.wrist;
     }
 
     public void onStart() {

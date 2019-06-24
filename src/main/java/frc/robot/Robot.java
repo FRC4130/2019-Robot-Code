@@ -38,6 +38,7 @@ public class Robot extends TimedRobot {
 
     SmartDashboard.putNumber("Battery Voltage", RobotController.getBatteryVoltage());
     SmartDashboard.putBoolean("Wrist Limit Switch", RobotMap.wristInput.get());
+    SmartDashboard.putNumber("Wrist Encoder Count", Subsystems.wrist.getEncoderPosition());
   }
 
 
