@@ -7,8 +7,6 @@
 
 package frc.robot;
 
-import javax.swing.text.WrappedPlainView;
-
 import com.ctre.phoenix.schedulers.ConcurrentScheduler;
 
 import edu.wpi.first.wpilibj.RobotController;
@@ -17,7 +15,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robots.Loops;
 import frc.robot.Robots.RobotMap;
 import frc.robot.Robots.Subsystems;
-import frc.robot.Subsystems.Wrist;
 
 
 public class Robot extends TimedRobot {

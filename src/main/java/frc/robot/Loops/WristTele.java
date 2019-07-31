@@ -1,10 +1,9 @@
 package frc.robot.Loops;
 
 import com.ctre.phoenix.ILoopable;
-import com.ctre.phoenix.motorcontrol.ControlMode;
+
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.Robots.RobotMap;
 import frc.robot.Robots.Subsystems;

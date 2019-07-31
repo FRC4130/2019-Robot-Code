@@ -8,7 +8,6 @@ import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
-import frc.robot.Robots.Loops;
 import frc.robot.Robots.RobotMap;
 import frc.robot.Robots.Subsystems;
 import frc.robot.Subsystems.Climb;
@@ -65,6 +64,7 @@ public class DriveTele implements ILoopable {
         double steer = -_joystick.getX(Hand.kRight);
         double drive = -_joystick.getY(Hand.kLeft);
         boolean auto = _joystick.getRawButton(2);
+
         steer *= 1;
         drive *= 1;
         if (auto) {
@@ -108,9 +108,9 @@ public class DriveTele implements ILoopable {
     public void LimelightTracking() {
 
         // These numbers must be tuned...
-        final double STEER_K = 0.035; // How hard to turn toward the target
+        final double STEER_K = 0.04; // How hard to turn toward the target
         final double DRIVE_K = 0.40; // How hard to drive fwd toward the target
-        final double DESIRED_TARGET_AREA = 2.50; // Area of the target when the robot reaches the wall
+        final double DESIRED_TARGET_AREA = 2; // Area of the target when the robot reaches the wall at level 1
         final double MAX_DRIVE = .70; // Speed limit so we don't drive too fast
         double tv = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tv").getDouble(0);
         double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);

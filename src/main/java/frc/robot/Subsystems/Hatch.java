@@ -3,6 +3,7 @@ package frc.robot.Subsystems;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import frc.robot.Robots.RobotMap;
+import frc.robot.Robots.Subsystems;
 
 public class Hatch {
 
@@ -20,6 +21,15 @@ public class Hatch {
     public void set(Value vl) {
 
         hatch.set(vl);
+
+        // if(vl == closed) {
+        //     Subsystems.ardunio.send(0, 0, 255, "pulse");
+        // }
+
+        // else {
+        //     Subsystems.ardunio.sendDefault();
+
+        // }
 
     }
 

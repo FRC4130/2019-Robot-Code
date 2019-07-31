@@ -1,5 +1,6 @@
 package frc.robot.Robots;
 
+// import frc.robot.Subsystems.Arduino;
 import frc.robot.Subsystems.Arm;
 import frc.robot.Subsystems.Climb;
 import frc.robot.Subsystems.ClimbAssist;
@@ -16,6 +17,7 @@ public class Subsystems {
     public static Wrist wrist;
     public static Hatch hatch;
     public static ClimbAssist climbAssist;
+    // public static Arduino ardunio;
 
     // This is tagging the values i created above to the actual methods from the classes i already made in the Subsystems folder
     public static void Init() {
@@ -26,6 +28,7 @@ public class Subsystems {
         wrist = new Wrist();
         hatch = new Hatch();
         climbAssist = new ClimbAssist();
+        // ardunio = new Arduino();
 
     }
 
