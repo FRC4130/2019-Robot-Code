@@ -98,9 +98,7 @@ public class ArmTele implements ILoopable {
         goToLevelOne = _joystick.getRawButton(RobotMap.kLevelOneButtonID);
         goToLevelTwo = _joystick.getRawButton(RobotMap.kLevelTwoButtonID);
         goToLevelThree = _joystick.getRawButton(RobotMap.kLevelThreeButtonID);
-
         useCargo = overrideUseCargo || Subsystems.wrist.getCargoLimitSwitch() || _joystick.getRawButton(RobotMap.kFloorCargoButtonID);
-        manualHome = _joystick.getRawButton(RobotMap.kHomeAllOverrideButtonID);
         SmartDashboard.putBoolean("Cargo  Override", overrideUseCargo);
 
         goToCargoShip = _joystick.getRawButton(RobotMap.kCargoShipButtonID);
@@ -127,7 +125,7 @@ public class ArmTele implements ILoopable {
             if(useCargo){currentGamePiecePositions = Positions.cargo;}
             else if (overrideHatchPanelFromFloor){
                 currentGamePiecePositions = Positions.floorHatch;
-            }
+            }   
             else {currentGamePiecePositions = Positions.hatch;}
 
             if(goToFloor){currentTarget = currentGamePiecePositions.floor;}

@@ -22,10 +22,6 @@ public class Positions{
         home.arm = -70;
         home.wrist = 0;
 
-        /*---Manual Home---*/
-        manual.arm = 500;
-        manual.wrist = 3000;
-
         /* --- Positions when handling Cargo --- */
         cargo.floor.arm = 200;
         cargo.floor.wrist = -2550;
@@ -45,8 +41,8 @@ public class Positions{
         /* --- Positions when handling Hatch Panels --- */
 
         //higher negative value on wirst = lower wrist position
-        hatch.floor.arm = 0;
-        hatch.floor.wrist = -0;
+        hatch.floor.arm = 200;
+        hatch.floor.wrist = -1175;
 
         hatch.ship.arm = 500;
         hatch.ship.wrist = -2200;

@@ -77,8 +77,7 @@ public class RobotMap {
     /* --- Operator Button/Axis IDs --- */
     //TODO: Map Operator Gamepad inputs here.
     public static final int kFloorCargoButtonID = 7;
-    public static final int kFloorHatchButtonID = 25;
-    public static final int kHomeAllOverrideButtonID = 5;
+    public static final int kFloorHatchButtonID = 5;
     public static final int kCargoShipButtonID = 1;
     public static final int kLevelOneButtonID = 2;
     public static final int kLevelTwoButtonID = 3;

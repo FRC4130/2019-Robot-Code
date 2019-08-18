@@ -31,7 +31,7 @@ public class WristTele implements ILoopable {
         _joystick = RobotMap.operatorJoystick;
         _actualMode = WristMode.Encoder;
         _desiredmode = WristMode.Encoder;
-        manualOverride = _joystick.getRawButton(5);
+        manualOverride = _joystick.getRawButton(0);
     }
 
     public void onStart() {
@@ -55,7 +55,7 @@ public class WristTele implements ILoopable {
     private void updateInputs() {
         //wristJoystick = _joystick.getRawAxis(1)*-1;
         intakeJoystick = _joystick.getRawAxis(RobotMap.kIntakeJoystickAxis);
-        manualOverride = _joystick.getRawButton(5);
+        manualOverride = _joystick.getRawButton(0);
     }
 
     private void updateMode() {
