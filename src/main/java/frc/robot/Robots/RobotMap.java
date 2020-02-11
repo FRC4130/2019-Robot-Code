@@ -90,7 +90,7 @@ public class RobotMap {
 
     //initiating all of the devices coded above so they are now connected to a physical device on the robot
     public static void Init() {
-
+        
         leftDrive = new TalonSRX(kLeftDriveID);
         leftDrive2 = new TalonSRX(kLeftDrive2ID);
         
